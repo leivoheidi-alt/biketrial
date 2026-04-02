@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import SanityImage from '@/components/ui/SanityImage'
+import type { SanityImage as SanityImageType } from '@/types/sanity'
 import {
   bikefestSponsorFallbackImages,
   exhibitorReasons,
@@ -24,7 +25,7 @@ function SalesImageLayer({
   className,
   priority = false,
 }: {
-  sanityImage?: { asset?: { _ref: string; _type: 'reference' } }
+  sanityImage?: SanityImageType
   fallbackSrc: string
   alt: string
   className: string

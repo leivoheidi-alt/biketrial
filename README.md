@@ -1,9 +1,33 @@
-# Sanity Clean Content Studio
+# Bikefest Studio Repository
 
-Congratulations, you have now installed the Sanity Content Studio, an open-source real-time content editing environment connected to the Sanity backend.
+Tässä repossa on kaksi eri sovellusta:
 
-Now you can do the following things:
+- repojuuri: Sanity Studio
+- [`web/`](/Users/heidi/Documents/Bikefest 2026/www-sivut/bikefest-studio/web): Next.js-frontend
 
-- [Read “getting started” in the docs](https://www.sanity.io/docs/introduction/getting-started?utm_source=readme)
-- [Join the Sanity community](https://www.sanity.io/community/join?utm_source=readme)
-- [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
+## Tärkeä deploy-huomio
+
+Verceliin pitää deployata **vain** Next.js-sivusto hakemistosta `web/`.
+
+- Älä deployaa repojuurta, jos tarkoitus on julkaista sivusto
+- Repojuuri käynnistää Sanity Studion, ei julkista verkkosivua
+- Oikea Vercel `Root Directory` on: `web`
+
+Tarkemmat julkaisuohjeet löytyvät tiedostosta [DEPLOYMENT.md](/Users/heidi/Documents/Bikefest 2026/www-sivut/bikefest-studio/DEPLOYMENT.md).
+
+## Paikallinen kehitys
+
+Sanity Studio repojuuressa:
+
+```bash
+npm install
+npm run dev
+```
+
+Next.js-sivusto `web/`-hakemistossa:
+
+```bash
+cd web
+npm install
+npm run dev
+```

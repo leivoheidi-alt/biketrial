@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import BikefestHeroMedia from '@/components/sections/BikefestHeroMedia'
 import SanityImage from '@/components/ui/SanityImage'
+import type { SanityImage as SanityImageType } from '@/types/sanity'
 import {
   bikefestVisitorFallbackImages,
   getBikefestData,
@@ -47,6 +48,15 @@ export const metadata: Metadata = {
   },
 }
 
+type ScheduleItem = {
+  segment: 'AAMU' | 'PÄIVÄ' | 'ILTA'
+  time: string
+  category: 'BIKETRIAL' | 'SKEITTI' | 'BMX' | 'MUSIIKKI'
+  title: string
+  description?: string
+  emphasis: 'primary' | 'secondary' | 'meta'
+}
+
 function BikefestImageLayer({
   sanityImage,
   fallbackSrc,
@@ -54,7 +64,7 @@ function BikefestImageLayer({
   className,
   priority = false,
 }: {
-  sanityImage?: { asset?: { _ref: string; _type: 'reference' } }
+  sanityImage?: SanityImageType
   fallbackSrc: string
   alt: string
   className: string
@@ -121,7 +131,7 @@ export default async function BikeFestLandingPage() {
     { label: 'Yrityksille', href: '#yrityksille' },
     { label: 'Kilpailijoille', href: '#kilpailijoille' },
   ] as const
-  const fullSchedule = [
+  const fullSchedule: ScheduleItem[] = [
     {
       segment: 'AAMU',
       time: '10.00–11.00',
@@ -230,20 +240,20 @@ export default async function BikeFestLandingPage() {
       description: 'View, Neal Low, Ooni Damus, Kessu',
       emphasis: 'primary',
     },
-  ] as const
-  const scheduleCategoryStyles: Record<(typeof fullSchedule)[number]['category'], string> = {
+  ]
+  const scheduleCategoryStyles: Record<ScheduleItem['category'], string> = {
     BIKETRIAL: 'border-[#FF6A00]/35 bg-[#FF6A00]/12 text-[#FFB066]',
     SKEITTI: 'border-white/18 bg-white/8 text-white',
     BMX: 'border-sky-400/25 bg-sky-400/10 text-sky-200',
     MUSIIKKI: 'border-fuchsia-400/25 bg-fuchsia-400/10 text-fuchsia-200',
   }
-  const scheduleRowStyles: Record<(typeof fullSchedule)[number]['category'], string> = {
+  const scheduleRowStyles: Record<ScheduleItem['category'], string> = {
     BIKETRIAL: 'bg-[#FF6A00]/[0.035]',
     SKEITTI: 'bg-violet-300/[0.035]',
     BMX: 'bg-sky-400/[0.04]',
     MUSIIKKI: 'bg-white/[0.03]',
   }
-  const scheduleEmphasisStyles: Record<(typeof fullSchedule)[number]['emphasis'], string> = {
+  const scheduleEmphasisStyles: Record<ScheduleItem['emphasis'], string> = {
     primary: 'border-l-2 border-[#FF6A00]/70 bg-white/[0.02]',
     secondary: '',
     meta: '',
@@ -252,7 +262,7 @@ export default async function BikeFestLandingPage() {
     { label: 'AAMU', items: fullSchedule.filter((item) => item.segment === 'AAMU') },
     { label: 'PÄIVÄ', items: fullSchedule.filter((item) => item.segment === 'PÄIVÄ') },
     { label: 'ILTA', items: fullSchedule.filter((item) => item.segment === 'ILTA') },
-  ] as const
+  ]
 
   const visitorHighlights = [
     {

@@ -21,6 +21,8 @@
 # Misc
 .DS_Store
 *.pem
+/.vercel
+/web/.vercel
 
 # Typescript
 *.tsbuildinfo
