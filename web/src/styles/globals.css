@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── CSS Variables ───────────────────────────────────────── */
+:root {
+  --orange: #FF6A00;
+  --orange-hover: #E85C00;
+  --black: #000000;
+  --dark: #1A1A1A;
+  --border: #2A2A2A;
+  --text: #FFFFFF;
+  --muted: #B3B3B3;
+}
+
+/* ── Base ────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #000000;
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  /* All headings use Anton by default */
+  h1, h2, h3 {
+    font-family: var(--font-anton), Impact, 'Arial Narrow', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+
+  h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+
+  /* Smooth anchor scrolling with navbar offset */
+  [id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* ── Components ─────────────────────────────────────────── */
+@layer components {
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-7 py-3.5
+           bg-[#FF6A00] hover:bg-[#E85C00]
+           text-white font-bold text-sm uppercase tracking-widest
+           rounded-full
+           transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-[#FF6A00] focus:ring-offset-2 focus:ring-offset-black;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           px-7 py-3.5
+           border-2 border-white text-white
+           font-bold text-sm uppercase tracking-widest
+           rounded-full
+           hover:bg-white hover:text-black
+           transition-all duration-200;
+  }
+
+  .btn-outline-orange {
+    @apply inline-flex items-center justify-center gap-2
+           px-7 py-3.5
+           border-2 border-[#FF6A00] text-[#FF6A00]
+           font-bold text-sm uppercase tracking-widest
+           rounded-full
+           hover:bg-[#FF6A00] hover:text-white
+           transition-all duration-200;
+  }
+
+  /* Legacy alias kept for existing code */
+  .btn-outline-white {
+    @apply btn-outline;
+  }
+
+  /* Layout helpers */
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  /* Dark card */
+  .card {
+    @apply bg-[#1A1A1A] border border-[#2A2A2A] rounded-2xl
+           transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply card hover:border-[#FF6A00]/50 hover:bg-[#1F1F1F];
+  }
+
+  /* Orange label / tag above headings */
+  .eyebrow {
+    @apply text-[#FF6A00] font-bold uppercase tracking-[0.2em];
+    font-size: 0.9rem;
+  }
+
+  /* Muted body text */
+  .text-body {
+    @apply text-[#B3B3B3] leading-relaxed;
+  }
+
+  /* Tag pill */
+  .tag {
+    @apply inline-block px-3 py-1 text-xs font-bold rounded-full uppercase tracking-widest;
+  }
+
+  /* Divider line */
+  .divider {
+    @apply border-t border-[#2A2A2A];
+  }
+
+  /* Orange gradient overlay (for image sections) */
+  .orange-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 106, 0, 0.15) 0%,
+      transparent 60%
+    );
+  }
+
+  /* Section with dark secondary background */
+  .section-dark {
+    @apply bg-[#1A1A1A];
+  }
+}
+
+/* ── Utilities ───────────────────────────────────────────── */
+@layer utilities {
+  /* Anton heading helpers */
+  .heading-xl {
+    font-family: var(--font-anton), Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+  }
+
+  /* Orange text gradient */
+  .text-orange-gradient {
+    background: linear-gradient(90deg, #FF6A00 0%, #FF9A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Subtle orange glow for key elements */
+  .glow-orange {
+    box-shadow: 0 0 40px rgba(255, 106, 0, 0.15);
+  }
+}
