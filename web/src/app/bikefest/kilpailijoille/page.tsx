@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import SanityImage from '@/components/ui/SanityImage'
-import type { SanityImage as SanityImageType } from '@/types/sanity'
 import {
   bikefestVisitorFallbackImages,
   catLabel,
@@ -24,7 +23,7 @@ function CompetitorImageLayer({
   className,
   priority = false,
 }: {
-  sanityImage?: SanityImageType
+  sanityImage?: { asset?: { _ref: string; _type: 'reference' } }
   fallbackSrc: string
   alt: string
   className: string
@@ -33,7 +32,7 @@ function CompetitorImageLayer({
   if (sanityImage?.asset) {
     return (
       <SanityImage
-        image={sanityImage}
+        image={sanityImage as any}
         alt={alt}
         fill
         priority={priority}
