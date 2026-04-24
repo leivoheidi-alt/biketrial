@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -22,28 +23,29 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-sm border-b border-[#2A2A2A]">
       <div className="section-container">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
 
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center gap-2.5 group"
+            className="flex items-center group"
             onClick={() => setOpen(false)}
           >
-            <span className="text-[#FF6A00] text-xl font-bold">▲</span>
-            <span
-              className="font-heading text-white text-xl uppercase tracking-wider group-hover:text-[#FF6A00] transition-colors"
-              style={{ fontFamily: 'var(--font-anton), Impact, sans-serif' }}
-            >
-              Biketrial Hämeenlinna
-            </span>
+            <Image
+              src="/images/fillaritrial-logo.webp"
+              alt="FillariTrial logo"
+              width={320}
+              height={70}
+              priority
+              className="h-15 w-auto transition-opacity duration-200 group-hover:opacity-85 sm:h-16"
+            />
           </Link>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
             <Link
               href="/seura"
-              className={`text-sm font-bold uppercase tracking-widest transition-colors ${
+              className={`text-[1rem] font-bold uppercase tracking-[0.14em] transition-colors ${
                 seuraActive ? 'text-white' : 'text-[#B3B3B3] hover:text-white'
               }`}
             >
@@ -59,7 +61,7 @@ export default function Navbar() {
                 aria-expanded={bikefestDesktopOpen}
                 aria-controls="bikefest-desktop-submenu"
                 onClick={() => setBikefestDesktopOpen((value) => !value)}
-                className={`inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-bold uppercase tracking-widest transition-colors ${
+                className={`inline-flex items-center gap-2 rounded-full px-3 py-2 text-[1rem] font-bold uppercase tracking-[0.14em] transition-colors ${
                   bikefestActive || bikefestDesktopOpen
                     ? 'bg-[#111111] text-white'
                     : 'text-[#B3B3B3] hover:bg-[#111111] hover:text-white'
@@ -67,7 +69,7 @@ export default function Navbar() {
               >
                 <span>BikeFest</span>
                 <span
-                  className={`text-[10px] transition-transform ${
+                  className={`text-[20px] leading-none transition-transform ${
                     bikefestDesktopOpen ? 'rotate-180' : ''
                   }`}
                 >
@@ -86,7 +88,7 @@ export default function Navbar() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className={`block rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-widest transition-colors ${
+                        className={`block rounded-lg px-3 py-2.5 text-[0.9rem] font-bold uppercase tracking-[0.14em] transition-colors ${
                           currentPath === item.href
                             ? 'bg-[#FF6A00] text-white'
                             : 'text-[#B3B3B3] hover:bg-black hover:text-white'
@@ -101,8 +103,8 @@ export default function Navbar() {
               )}
             </div>
             <Link
-              href="/bikefest/kumppaneille"
-              className="btn-primary text-xs px-5 py-2.5"
+              href="/bikefest/näytteilleasettajat"
+              className="btn-primary text-[0.9rem] px-5 py-2.5"
             >
               Varaa standipaikka
             </Link>
@@ -145,13 +147,13 @@ export default function Navbar() {
                   aria-expanded={bikefestMobileOpen}
                   aria-controls="bikefest-mobile-submenu"
                   onClick={() => setBikefestMobileOpen((value) => !value)}
-                  className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-left font-bold uppercase tracking-widest text-sm transition-colors ${
+                  className={`flex w-full items-center justify-between rounded-xl px-3 py-3 text-left font-bold uppercase tracking-[0.14em] text-[1rem] transition-colors ${
                     bikefestActive ? 'bg-[#111111] text-white' : 'text-[#B3B3B3] hover:bg-[#111111] hover:text-white'
                   }`}
                 >
                   <span>BikeFest</span>
                   <span
-                    className={`text-[10px] transition-transform ${
+                    className={`text-[20px] leading-none transition-transform ${
                       bikefestMobileOpen ? 'rotate-180' : ''
                     }`}
                   >
@@ -168,7 +170,7 @@ export default function Navbar() {
                       <Link
                         key={item.href}
                         href={item.href}
-                        className={`rounded-lg px-3 py-2.5 text-xs font-bold uppercase tracking-widest transition-colors ${
+                        className={`rounded-lg px-3 py-2.5 text-[0.9rem] font-bold uppercase tracking-[0.14em] transition-colors ${
                           currentPath === item.href
                             ? 'bg-[#FF6A00] text-white'
                             : 'text-[#B3B3B3] hover:bg-black hover:text-white'
@@ -182,7 +184,7 @@ export default function Navbar() {
                 )}
               </div>
               <Link
-                href="/bikefest/kumppaneille"
+                href="/bikefest/näytteilleasettajat"
                 className="btn-primary mt-4 w-full justify-center text-center"
                 onClick={() => setOpen(false)}
               >

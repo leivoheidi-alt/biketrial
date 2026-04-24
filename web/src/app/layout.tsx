@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: '%s | Biketrial Hämeenlinna',
   },
   description:
-    'Biketrial Hämeenlinna — paikallinen polkupyörätrial-seura sekä BikeFest 2026, biketrialin, skeittauksen ja katukulttuurin suurtapahtuma.',
+    'Biketrial Hämeenlinna on osa Tawast Cycling Clubia (Tawast CC) ja toimii seuran trialjaostona. Järjestämme myös BikeFest-tapahtuman Hämeenlinnassa.',
   keywords: [
     'polkupyörätrial',
     'biketrial Hämeenlinna',

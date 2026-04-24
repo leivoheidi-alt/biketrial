@@ -1,13 +1,10 @@
-import { existsSync } from 'node:fs'
-import path from 'node:path'
 import type { Metadata } from 'next'
+import { unstable_cache } from 'next/cache'
 import Image from 'next/image'
 import Link from 'next/link'
 import { client } from '@/lib/sanity'
-import { urlFor } from '@/lib/sanity'
-import { homepageQuery, activeCourseQuery, clubIntroImageQuery } from '@/lib/queries'
-import SanityImage from '@/components/ui/SanityImage'
-import type { HomepageData, BeginnerCourseRef, ClubPageData } from '@/types/sanity'
+import { homepageQuery, activeCourseQuery } from '@/lib/queries'
+import type { HomepageData, BeginnerCourseRef } from '@/types/sanity'
 
 export const metadata: Metadata = {
   title: 'BikeFest Hämeenlinna 2026 – Biketrial SM, Skate Jam & BMX',
@@ -29,7 +26,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/home-hero.jpg',
+        url: '/images/home-hero-sanity.webp',
         alt: 'BikeFest Hämeenlinna 2026 hero-kuva',
       },
     ],
@@ -39,112 +36,35 @@ export const metadata: Metadata = {
     title: 'BikeFest Hämeenlinna 2026 – Biketrial SM, Skate Jam & BMX',
     description:
       'BikeFest Hämeenlinna 27.6.2026. Biketrialin SM-osakilpailu, skeittijamit, BMX-demot ja koko perheen pyöräilytapahtuma Hämeensaaressa.',
-    images: ['/images/home-hero.jpg'],
+    images: ['/images/home-hero-sanity.webp'],
   },
 }
 
+const getHomepageData = unstable_cache(async () => {
+  const [homepage, activeCourse] = await Promise.all([
+    client.fetch<HomepageData | null>(homepageQuery).catch(() => null),
+    client.fetch<BeginnerCourseRef | null>(activeCourseQuery).catch(() => null),
+  ])
+
+  return { homepage, activeCourse }
+}, ['homepage-data'], { revalidate: 300 })
+
 const homepageFallbackImages = {
-  heroImage: '/images/home-hero.jpg',
-  clubCardImage: '/images/home-club-card.jpg',
-  bikefestCardImage: '/images/home-bikefest-card.jpg',
+  heroImage: '/images/home-hero-sanity.webp',
+  clubCardImage: '/images/home-club-card-sanity.webp',
+  bikefestCardImage: '/images/home-course-card-sanity.jpg',
   clubIntroImage: '/images/fillaritrial.webp',
 } as const
 
-function resolvePublicImage(src: string) {
-  return existsSync(path.join(process.cwd(), 'public', src.replace(/^\//, ''))) ? src : null
-}
-
-function getSanityImageDimensions(assetRef?: string) {
-  if (!assetRef) return null
-
-  const match = assetRef.match(/-(\d+)x(\d+)-/)
-  if (!match) return null
-
-  const width = Number(match[1])
-  const height = Number(match[2])
-
-  if (!width || !height) return null
-
-  return { width, height }
-}
-
-function HomepageImageLayer({
-  sanityImage,
-  fallbackSrc,
-  alt,
-  priority = false,
-  className,
-}: {
-  sanityImage?: HomepageData['heroImage']
-  fallbackSrc: string
-  alt: string
-  priority?: boolean
-  className: string
-}) {
-  if (sanityImage?.asset) {
-    return (
-      <SanityImage
-        image={sanityImage}
-        alt={alt}
-        fill
-        priority={priority}
-        className={className}
-      />
-    )
-  }
-
-  const localFallback = resolvePublicImage(fallbackSrc)
-  if (localFallback) {
-    return (
-      <Image
-        src={localFallback}
-        alt={alt}
-        fill
-        priority={priority}
-        className={className}
-        sizes="100vw"
-      />
-    )
-  }
-
-  return (
-    <div
-      aria-hidden
-      className={className}
-      style={{
-        background:
-          'radial-gradient(circle at 20% 20%, rgba(255,106,0,0.35) 0%, transparent 28%), radial-gradient(circle at 80% 0%, rgba(255,255,255,0.12) 0%, transparent 22%), linear-gradient(145deg, #1A1A1A 0%, #0A0A0A 58%, #111111 100%)',
-      }}
-    />
-  )
-}
-
 export default async function HomePage() {
-  const [homepage, activeCourse, clubIntroImageData] = await Promise.all([
-    client.fetch<HomepageData | null>(homepageQuery).catch(() => null),
-    client.fetch<BeginnerCourseRef | null>(activeCourseQuery).catch(() => null),
-    client.fetch<Pick<ClubPageData, 'introImage'> | null>(clubIntroImageQuery).catch(() => null),
-  ])
-
-  const clubCard = homepage?.entryCards?.[0]
-  const bikefestCard = homepage?.entryCards?.[1]
+  const { homepage, activeCourse } = await getHomepageData()
 
   const homepageHeroTitle = homepage?.heroTitle?.trim() ?? 'BikeFest 27.6.2026'
   const bikefestTitleMatch = homepageHeroTitle.match(/^bikefest\b\s*(.*)$/i)
   const heroPrimaryTitle = bikefestTitleMatch ? 'BIKEFEST' : homepageHeroTitle.toUpperCase()
 
-  const homepageHeroDimensions = getSanityImageDimensions(homepage?.heroImage?.asset?._ref) ?? {
-    width: 1920,
-    height: 1080,
-  }
-
-  const homepageHeroImageSrc = homepage?.heroImage?.asset
-    ? urlFor(homepage.heroImage).width(2600).auto('format').url()
-    : resolvePublicImage(homepageFallbackImages.heroImage)
-
-  const clubIntroImageSrc = clubIntroImageData?.introImage?.asset
-    ? urlFor(clubIntroImageData.introImage).width(1800).auto('format').url()
-    : resolvePublicImage(homepageFallbackImages.clubIntroImage)
+  const homepageHeroImageSrc = homepageFallbackImages.heroImage
+  const clubIntroImageSrc = homepageFallbackImages.clubIntroImage
 
   const heroSupportingLine = 'Mm. Biketrialin SM-Cup, skeittauksen minijamit ja BMX-näytökset'
 
@@ -154,26 +74,15 @@ export default async function HomePage() {
       <section className="bg-black">
         <div className="section-container pb-5 pt-10 sm:pb-6 sm:pt-12">
           <div className="relative overflow-hidden rounded-[28px] border border-[#2A2A2A] bg-[#111111]">
-            {homepageHeroImageSrc ? (
-              <Image
-                src={homepageHeroImageSrc}
-                alt="BMX, biketrial ja polkupyörätrial osana BikeFest-kulttuuria Hämeenlinnassa"
-                width={homepageHeroDimensions.width}
-                height={homepageHeroDimensions.height}
-                priority
-                className="h-auto w-full object-contain object-center"
-                sizes="100vw"
-              />
-            ) : (
-              <div
-                aria-hidden
-                className="aspect-[16/9] w-full"
-                style={{
-                  background:
-                    'radial-gradient(circle at 20% 20%, rgba(255,106,0,0.22) 0%, transparent 28%), radial-gradient(circle at 80% 0%, rgba(255,255,255,0.12) 0%, transparent 22%), linear-gradient(145deg, #1A1A1A 0%, #0A0A0A 58%, #111111 100%)',
-                }}
-              />
-            )}
+            <Image
+              src={homepageHeroImageSrc}
+              alt="BMX, biketrial ja polkupyörätrial osana BikeFest-kulttuuria Hämeenlinnassa"
+              width={1920}
+              height={1080}
+              priority
+              className="h-auto w-full object-contain object-center"
+              sizes="100vw"
+            />
             <div
               aria-hidden
               className="absolute inset-0"
@@ -231,7 +140,7 @@ export default async function HomePage() {
 
                   <h1
                     className="mb-2 block w-full text-white leading-[0.92]"
-                    style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                    style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
                   >
                     <span className="-ml-[0.045em] block text-[clamp(3.6rem,9vw,7.2rem)]">{heroPrimaryTitle}</span>
                   </h1>
@@ -273,11 +182,12 @@ export default async function HomePage() {
               className="group relative flex min-h-[400px] flex-col overflow-hidden rounded-2xl transition-all duration-300"
             >
               <div className="relative h-[190px] overflow-hidden rounded-t-2xl sm:h-[210px]">
-                <HomepageImageLayer
-                  sanityImage={bikefestCard?.image}
-                  fallbackSrc={homepageFallbackImages.bikefestCardImage}
+                <Image
+                  src={homepageFallbackImages.bikefestCardImage}
                   alt="Polkupyörätrialin alkeiskurssi Hämeenlinnassa"
+                  fill
                   className="absolute inset-0 scale-[1.05] object-cover object-center contrast-110 saturate-110 transition-transform duration-500 group-hover:scale-[1.08]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div className="absolute right-0 top-0 z-20 flex min-h-[56px] min-w-[88px] flex-col items-center justify-center rounded-[10px] bg-[#FF6A00] px-4 py-2 text-center text-[12px] font-bold uppercase leading-[1.05] tracking-[0.08em] text-white shadow-[0_8px_20px_rgba(0,0,0,0.2)] sm:min-h-[60px] sm:min-w-[96px] sm:text-[13px]">
                   <span className="block">ALOITA</span>
@@ -295,7 +205,7 @@ export default async function HomePage() {
                 <div className="absolute inset-x-0 bottom-0 z-10 px-8 pb-7 sm:px-10 sm:pb-8">
                   <h2
                     className="text-4xl leading-none text-white sm:text-5xl"
-                    style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                    style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
                   >
                     Alkeiskurssi 7.5.2026
                   </h2>
@@ -370,11 +280,12 @@ export default async function HomePage() {
               className="group relative flex min-h-[400px] flex-col overflow-hidden rounded-2xl bg-[#FF6A00] transition-all duration-300 hover:bg-[#E85C00]"
             >
               <div className="relative h-[190px] overflow-hidden sm:h-[210px]">
-                <HomepageImageLayer
-                  sanityImage={clubCard?.image}
-                  fallbackSrc={homepageFallbackImages.clubCardImage}
+                <Image
+                  src={homepageFallbackImages.clubCardImage}
                   alt="Biketrial- ja polkupyörätrialharjoittelua Hämeenlinnassa"
+                  fill
                   className="absolute inset-0 scale-[1.05] object-cover object-center contrast-110 saturate-110 transition-transform duration-500 group-hover:scale-[1.08]"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div
                   aria-hidden
@@ -383,7 +294,7 @@ export default async function HomePage() {
                 <div className="absolute inset-x-0 bottom-0 z-10 px-8 pb-7 sm:px-10 sm:pb-8">
                   <h2
                     className="text-4xl leading-none text-white sm:text-5xl"
-                    style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                    style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
                   >
                     Mitä on Biketrial?
                   </h2>
@@ -405,7 +316,7 @@ export default async function HomePage() {
                     Polkupyörätrialissa opetellaan tasapainoa, kehonhallintaa ja rohkeutta, jokainen omalla tasollaan.
                     <br />
                     <br />
-                    Olemme Tawast Cycling Club ry:n trialjaosto.
+                    Biketrial Hämeenlinna on osa Tawast Cycling Clubia (Tawast CC).
                     <br />
                     Harjoittelemme yhdessä ja rakennamme lajia eteenpäin Hämeenlinnassa.
                     <br />
@@ -442,7 +353,7 @@ export default async function HomePage() {
               <div className="eyebrow mb-5">Mitä on biketrial eli polkupyörätrial?</div>
               <h2
                 className="text-[clamp(2.5rem,6vw,4.5rem)] text-white mb-6 leading-[1.12]"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 Tasapainoa.<br />
                 Tarkkuutta.<br />
@@ -460,24 +371,13 @@ export default async function HomePage() {
             </div>
 
             <div className="relative min-h-[360px] overflow-hidden rounded-[28px] border border-[#2A2A2A] bg-black sm:min-h-[420px] lg:min-h-[540px]">
-              {clubIntroImageSrc ? (
-                <Image
-                  src={clubIntroImageSrc}
-                  alt="Biketrial-harjoittelua Hämeenlinnassa"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(min-width: 1024px) 42vw, 100vw"
-                />
-              ) : (
-                <div
-                  aria-hidden
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 18% 18%, rgba(255,106,0,0.22) 0%, transparent 30%), radial-gradient(circle at 82% 0%, rgba(255,255,255,0.1) 0%, transparent 24%), linear-gradient(150deg, #1A1A1A 0%, #090909 58%, #111111 100%)',
-                  }}
-                />
-              )}
+              <Image
+                src={clubIntroImageSrc}
+                alt="Biketrial-harjoittelua Hämeenlinnassa"
+                fill
+                className="object-cover object-center"
+                sizes="(min-width: 1024px) 42vw, 100vw"
+              />
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0"
@@ -532,7 +432,7 @@ export default async function HomePage() {
               <div className="eyebrow mb-5">BikeFest 2026</div>
               <h2
                 className="text-[clamp(2.5rem,6vw,4.5rem)] text-white mb-6 leading-[1.12]"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 Tavoita satoja<br />
                 kävijöitä<br />

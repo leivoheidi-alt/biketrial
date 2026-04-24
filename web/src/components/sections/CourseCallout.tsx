@@ -17,7 +17,7 @@ export default function CourseCallout({ course }: Props) {
           </div>
           <h3
             className="text-3xl sm:text-4xl text-white leading-none mb-4"
-            style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+            style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
           >
             {course.startDateText}
           </h3>

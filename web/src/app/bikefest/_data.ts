@@ -1,5 +1,6 @@
 import { existsSync } from 'node:fs'
 import path from 'node:path'
+import { unstable_cache } from 'next/cache'
 import { client } from '@/lib/sanity'
 import { bikefestPageQuery, programItemsQuery, partnersQuery } from '@/lib/queries'
 import type { BikefestPageData, Partner, ProgramItem, SponsorPackage } from '@/types/sanity'
@@ -278,7 +279,7 @@ export function resolvePackageTier(pkg: SponsorPackage) {
   return 'silver'
 }
 
-export async function getBikefestData() {
+export const getBikefestData = unstable_cache(async () => {
   const [bikefest, programItems, partners] = await Promise.all([
     client.fetch<BikefestPageData | null>(bikefestPageQuery).catch(() => null),
     client.fetch<ProgramItem[]>(programItemsQuery).catch(() => []),
@@ -295,7 +296,7 @@ export async function getBikefestData() {
     kidsAreaNote: bikefest?.familyAreaBlock?.kidsAreaPartner?.displayNote ?? 'yhteistyössä Liikenneturvan kanssa',
     salesEmail: bikefest?.contactCta?.email ?? 'info@biketrial.fi',
   }
-}
+}, ['bikefest-page-data'], { revalidate: 300 })
 
 export function resolvePublicImage(src: string) {
   return existsSync(path.join(process.cwd(), 'public', src.replace(/^\//, ''))) ? src : null

@@ -130,7 +130,7 @@ export default async function BikefestCompetitorsPage() {
             <div>
               <h1
                 className="text-[clamp(3rem,9vw,6.5rem)] text-white leading-none mb-6"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 {competitorInfo.heroTitle ?? fallbackCompetitorInfo.heroTitle}
               </h1>
@@ -157,7 +157,7 @@ export default async function BikefestCompetitorsPage() {
             </div>
 
             <div className="rounded-2xl border border-[#2A2A2A] bg-[#111111] p-6 sm:p-7">
-              <div className="text-[#FF6A00] text-xs font-bold uppercase tracking-[0.2em] mb-4">
+              <div className="text-[#FF6A00] text-[1.2rem] font-bold uppercase tracking-[0.08em] leading-[1.15] mb-4">
                 Kisainfo nopeasti
               </div>
               <div className="space-y-4">
@@ -214,7 +214,7 @@ export default async function BikefestCompetitorsPage() {
               <div className="eyebrow mb-5">Kilpailun perusteet</div>
               <h2
                 className="text-[clamp(2.2rem,5vw,4rem)] text-white mb-6 leading-none"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 Kaikki tärkein<br />
                 <span className="text-[#FF6A00]">yhdellä silmäyksellä</span>
@@ -263,7 +263,7 @@ export default async function BikefestCompetitorsPage() {
           <div className="eyebrow mb-5">Aikataulu</div>
           <h2
             className="text-[clamp(2.2rem,5vw,4rem)] text-white mb-10 leading-none"
-            style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+            style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
           >
             Kilpailupäivän<br />
             <span className="text-[#FF6A00]">aikataulu</span>
@@ -306,7 +306,7 @@ export default async function BikefestCompetitorsPage() {
               <div className="eyebrow mb-5">Luokat ja osallistuminen</div>
               <h2
                 className="text-[clamp(2rem,5vw,3.5rem)] text-white mb-6 leading-none"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 Luokat ja<br />
                 <span className="text-[#FF6A00]">osallistumisinfo</span>
@@ -348,7 +348,7 @@ export default async function BikefestCompetitorsPage() {
               <div className="eyebrow mb-5">Saapuminen ja sijainti</div>
               <h2
                 className="text-[clamp(2rem,5vw,3.5rem)] text-white mb-6 leading-none"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 Hämeensaari,<br />
                 <span className="text-[#FF6A00]">Hämeenlinna</span>
@@ -385,7 +385,7 @@ export default async function BikefestCompetitorsPage() {
                 </div>
                 <h2
                   className="text-[clamp(2rem,5vw,3.3rem)] text-white leading-none mb-4"
-                  style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                  style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
                 >
                   Tarkista nämä<br />
                   <span className="text-[#FF6A00]">ennen kisapäivää</span>
@@ -411,7 +411,7 @@ export default async function BikefestCompetitorsPage() {
         <div className="section-container max-w-2xl text-center">
           <h2
             className="text-[clamp(2.5rem,6vw,4rem)] text-white leading-none mb-5"
-            style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+            style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
           >
             Kilpailuinfo ja<br />
             yhteystiedot

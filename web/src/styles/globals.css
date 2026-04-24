@@ -11,6 +11,8 @@
   --border: #2A2A2A;
   --text: #FFFFFF;
   --muted: #B3B3B3;
+  --body-text: #D1D1D1;
+  --heading-stack: var(--font-anton), 'Bebas Neue', 'Oswald', Impact, 'Arial Narrow', sans-serif;
 }
 
 /* ── Base ────────────────────────────────────────────────── */
@@ -23,18 +25,42 @@
   body {
     @apply bg-black text-white antialiased;
     font-family: var(--font-inter), system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
   }
 
-  /* All headings use Anton by default */
   h1, h2, h3 {
-    font-family: var(--font-anton), Impact, 'Arial Narrow', sans-serif;
+    font-family: var(--heading-stack);
     text-transform: uppercase;
-    letter-spacing: -0.02em;
-    line-height: 0.95;
+    letter-spacing: 0.02em;
+    font-weight: 900;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 6vw, 5.75rem);
+    line-height: 1.05;
+  }
+
+  h2 {
+    font-size: clamp(2.1rem, 4.2vw, 4rem);
+    line-height: 1.08;
+  }
+
+  h3 {
+    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    line-height: 1.12;
+    font-weight: 800;
   }
 
   h4, h5, h6 {
-    @apply font-bold tracking-tight;
+    @apply font-bold tracking-normal uppercase;
+  }
+
+  p,
+  li {
+    color: var(--body-text);
+    font-weight: 400;
+    line-height: 1.58;
   }
 
   /* Smooth anchor scrolling with navbar offset */
@@ -135,16 +161,52 @@
   .section-dark {
     @apply bg-[#1A1A1A];
   }
+
+  .brand-card {
+    background: linear-gradient(180deg, #1a1a1a 0%, #0f0f0f 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    transition:
+      transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .brand-card-hover:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 106, 0, 0.7);
+    box-shadow: 0 14px 36px rgba(255, 106, 0, 0.12);
+  }
+
+  .brand-icon {
+    width: 42px;
+    height: 42px;
+    color: #FF6A00;
+    stroke-width: 1.8px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    transition:
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .group:hover .brand-icon {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px rgba(255, 106, 0, 0.28)) brightness(1.08);
+  }
 }
 
 /* ── Utilities ───────────────────────────────────────────── */
 @layer utilities {
   /* Anton heading helpers */
   .heading-xl {
-    font-family: var(--font-anton), Impact, sans-serif;
+    font-family: var(--heading-stack);
     text-transform: uppercase;
-    letter-spacing: -0.02em;
-    line-height: 0.9;
+    letter-spacing: 0.02em;
+    line-height: 1.05;
   }
 
   /* Orange text gradient */

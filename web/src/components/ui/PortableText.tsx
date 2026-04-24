@@ -23,7 +23,7 @@ export default function PortableTextRenderer({ value, className }: Props) {
               <h2
                 key={block._key}
                 className="text-3xl text-white mt-8 mb-3 leading-none"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 {text}
               </h2>
@@ -33,7 +33,7 @@ export default function PortableTextRenderer({ value, className }: Props) {
               <h3
                 key={block._key}
                 className="text-2xl text-white mt-6 mb-2 leading-none"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '-0.02em' }}
+                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 {text}
               </h3>

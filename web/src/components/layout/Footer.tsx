@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Footer() {
@@ -8,17 +9,17 @@ export default function Footer() {
 
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-[#FF6A00] text-lg font-bold">▲</span>
-              <span
-                className="text-white text-lg uppercase"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', letterSpacing: '0.05em' }}
-              >
-                Biketrial Hämeenlinna
-              </span>
+            <div className="mb-4">
+              <Image
+                src="/images/fillaritrial-logo.webp"
+                alt="Biketrial Hämeenlinna logo"
+                width={300}
+                height={66}
+                className="h-11 w-auto"
+              />
             </div>
-            <p className="text-[#B3B3B3] text-sm leading-relaxed">
-              Paikallinen polkupyörätrial-seura ja BikeFest-tapahtuman järjestäjä.
+            <p className="max-w-sm text-[#B8B8B8] text-sm leading-[1.72]">
+              Biketrial Hämeenlinna on osa Tawast Cycling Clubia (Tawast CC) ja toimii seuran trialjaostona. Järjestämme BikeFest-tapahtuman.
             </p>
           </div>
 
