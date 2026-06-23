@@ -20,6 +20,7 @@
   html {
     scroll-behavior: smooth;
     background-color: #000000;
+    overflow-x: hidden;
   }
 
   body {
@@ -27,6 +28,17 @@
     font-family: var(--font-inter), system-ui, sans-serif;
     font-weight: 400;
     line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  * {
+    min-width: 0;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
   }
 
   h1, h2, h3 {
@@ -37,17 +49,17 @@
   }
 
   h1 {
-    font-size: clamp(3rem, 6vw, 5.75rem);
+    font-size: clamp(2.55rem, 6vw, 5.75rem);
     line-height: 1.05;
   }
 
   h2 {
-    font-size: clamp(2.1rem, 4.2vw, 4rem);
+    font-size: clamp(1.9rem, 4.2vw, 4rem);
     line-height: 1.08;
   }
 
   h3 {
-    font-size: clamp(1.15rem, 2vw, 1.6rem);
+    font-size: clamp(1.08rem, 2vw, 1.6rem);
     line-height: 1.12;
     font-weight: 800;
   }
@@ -60,12 +72,13 @@
   li {
     color: var(--body-text);
     font-weight: 400;
-    line-height: 1.58;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
   }
 
   /* Smooth anchor scrolling with navbar offset */
   [id] {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 4.75rem;
   }
 }
 
@@ -75,9 +88,9 @@
   /* Buttons */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2
-           px-7 py-3.5
+           min-h-[44px] px-5 py-3
            bg-[#FF6A00] hover:bg-[#E85C00]
-           text-white font-bold text-sm uppercase tracking-widest
+           text-white font-bold text-[0.82rem] uppercase tracking-[0.14em]
            rounded-full
            transition-all duration-200
            focus:outline-none focus:ring-2 focus:ring-[#FF6A00] focus:ring-offset-2 focus:ring-offset-black;
@@ -85,9 +98,9 @@
 
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2
-           px-7 py-3.5
+           min-h-[44px] px-5 py-3
            border-2 border-white text-white
-           font-bold text-sm uppercase tracking-widest
+           font-bold text-[0.82rem] uppercase tracking-[0.14em]
            rounded-full
            hover:bg-white hover:text-black
            transition-all duration-200;
@@ -95,9 +108,9 @@
 
   .btn-outline-orange {
     @apply inline-flex items-center justify-center gap-2
-           px-7 py-3.5
+           min-h-[44px] px-5 py-3
            border-2 border-[#FF6A00] text-[#FF6A00]
-           font-bold text-sm uppercase tracking-widest
+           font-bold text-[0.82rem] uppercase tracking-[0.14em]
            rounded-full
            hover:bg-[#FF6A00] hover:text-white
            transition-all duration-200;
@@ -110,11 +123,11 @@
 
   /* Layout helpers */
   .section-container {
-    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-6xl px-4 sm:px-5 lg:px-8;
   }
 
   .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-12 sm:py-16 lg:py-24;
   }
 
   /* Dark card */
@@ -130,7 +143,7 @@
   /* Orange label / tag above headings */
   .eyebrow {
     @apply text-[#FF6A00] font-bold uppercase tracking-[0.2em];
-    font-size: 0.9rem;
+    font-size: 0.82rem;
   }
 
   /* Muted body text */
@@ -220,5 +233,30 @@
   /* Subtle orange glow for key elements */
   .glow-orange {
     box-shadow: 0 0 40px rgba(255, 106, 0, 0.15);
+  }
+}
+
+@media (min-width: 640px) {
+  .btn-primary,
+  .btn-outline,
+  .btn-outline-orange {
+    padding-inline: 1.75rem;
+    padding-block: 0.875rem;
+    font-size: 0.875rem;
+    letter-spacing: 0.1em;
+  }
+
+  .eyebrow {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 767px) {
+  h1 {
+    line-height: 0.98;
+  }
+
+  h2 {
+    line-height: 1.02;
   }
 }

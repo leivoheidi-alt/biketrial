@@ -4,8 +4,8 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer className="bg-[#111111] border-t border-[#2A2A2A]">
-      <div className="section-container py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+      <div className="section-container py-12 sm:py-14">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3">
 
           {/* Brand */}
           <div>
@@ -15,10 +15,10 @@ export default function Footer() {
                 alt="Biketrial Hämeenlinna logo"
                 width={300}
                 height={66}
-                className="h-11 w-auto"
+                className="h-10 w-auto sm:h-11"
               />
             </div>
-            <p className="max-w-sm text-[#B8B8B8] text-sm leading-[1.72]">
+            <p className="max-w-sm text-[0.96rem] leading-[1.72] text-[#B8B8B8] sm:text-sm">
               Biketrial Hämeenlinna on osa Tawast Cycling Clubia (Tawast CC) ja toimii seuran trialjaostona. Järjestämme BikeFest-tapahtuman.
             </p>
           </div>
@@ -46,21 +46,21 @@ export default function Footer() {
           </div>
 
           {/* Contact */}
-          <div>
+          <div id="footer-contact">
             <div className="eyebrow mb-5">Yhteystiedot</div>
-            <div className="flex flex-col gap-2.5 text-sm">
+            <div className="flex flex-col gap-2.5 text-[0.96rem] sm:text-sm">
               <a
                 href="mailto:info@biketrial.fi"
                 className="text-[#B3B3B3] hover:text-[#FF6A00] transition-colors"
               >
                 info@biketrial.fi
               </a>
-              <div className="flex gap-4 mt-2">
+              <div className="mt-2 flex flex-wrap gap-4">
                 <a
                   href="https://www.instagram.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#B3B3B3] hover:text-[#FF6A00] font-bold uppercase text-xs tracking-widest transition-colors"
+                  className="text-[0.82rem] font-bold uppercase tracking-[0.14em] text-[#B3B3B3] transition-colors hover:text-[#FF6A00]"
                 >
                   Instagram
                 </a>
@@ -68,7 +68,7 @@ export default function Footer() {
                   href="https://www.facebook.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#B3B3B3] hover:text-[#FF6A00] font-bold uppercase text-xs tracking-widest transition-colors"
+                  className="text-[0.82rem] font-bold uppercase tracking-[0.14em] text-[#B3B3B3] transition-colors hover:text-[#FF6A00]"
                 >
                   Facebook
                 </a>
@@ -78,11 +78,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="divider mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span className="text-[#B3B3B3] text-xs">
+        <div className="divider mt-10 flex flex-col items-center justify-between gap-2 pt-6 sm:mt-12 sm:flex-row">
+          <span className="text-xs text-[#B3B3B3]">
             © {new Date().getFullYear()} Biketrial Hämeenlinna
           </span>
-          <span className="text-[#B3B3B3] text-xs">biketrial.fi</span>
+          <span className="text-xs text-[#B3B3B3]">biketrial.fi</span>
         </div>
       </div>
     </footer>

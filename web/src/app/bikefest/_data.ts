@@ -16,53 +16,6 @@ export const bikefestSponsorFallbackImages = {
   sponsorSectionImage: '/images/bikefest-sponsor.jpg',
 } as const
 
-export const fallbackCompetitorInfo = {
-  heroTitle: 'Biketrial SM-Cup Hämeenlinna',
-  intro:
-    'BikeFestissä ajetaan biketrialin SM-Cupin osakilpailu. Tältä sivulta löytyvät kilpailijoiden tärkeimmät linkit, aikataulut, saapumisinfo ja yhteystiedot.',
-  competitionName: 'Biketrial SM-Cup osakilpailu osana BikeFest 2026 -tapahtumaa',
-  whoIsItFor:
-    'Kilpailu on tarkoitettu lisenssi- ja harrastajataustaisille ajajille kilpailukutsussa vahvistettavien luokkien mukaisesti.',
-  kilpailukutsuUrl: '',
-  ilmoittautuneetUrl: '',
-  tuloksetUrl: '',
-  classes: [
-    {
-      title: 'Nuorten luokat',
-      description: 'Nuoremmille kilpailijoille vahvistettavat luokat julkaistaan virallisessa kilpailukutsussa.',
-    },
-    {
-      title: 'Harrastajaluokat',
-      description: 'Matalamman kynnyksen osallistuminen kilpailukutsun ehtojen mukaisesti.',
-    },
-    {
-      title: 'Kilpaluokat',
-      description: 'Kokeneemmille kilpailijoille vahvistetut SM-Cup-luokat ja päivän kilpailurakenne.',
-    },
-  ],
-  participationNotes: [
-    'Tutustu kilpailukutsuun ennen ilmoittautumista.',
-    'Tarkista, että ilmoittautuminen on vahvistettu ennen kilpailupäivää.',
-    'Varmista oma varustus, pyörän kunto ja kilpailupäivän käytännöt etukäteen.',
-  ],
-  arrivalNotes: [
-    'Kilpailupaikka on Hämeensaaressa, Hämeenlinnassa.',
-    'Tarkemmat pysäköinti-, huoltoalue- ja ajo-ohjeet julkaistaan kilpailukutsussa.',
-    'Paikalle kannattaa tulla ajoissa kisainfoa ja valmistautumista varten.',
-  ],
-  checklist: [
-    'Tutustu kilpailukutsuun',
-    'Tarkista ilmoittautuminen',
-    'Saavu ajoissa',
-    'Seuraa tuloksia',
-  ],
-  contact: {
-    name: 'Kilpailuinfo',
-    email: 'info@biketrial.fi',
-    phone: '',
-  },
-} as const
-
 export const fallbackPackages: SponsorPackage[] = [
   {
     tier: 'main',
@@ -223,43 +176,6 @@ export const exhibitorReasons = [
   {
     title: 'Sama panostus, enemmän sisältöä',
     description: 'Standi, kuulutukset, some, verkkosivu ja tapahtumapäivän näkyvyys samassa paketissa.',
-  },
-]
-
-export const competitorActions = [
-  {
-    id: 'kilpailukutsu',
-    label: 'Kilpailukutsu',
-    note: 'Viralliset kilpailuohjeet ja tarkennukset',
-  },
-  {
-    id: 'ilmoittautuneet',
-    label: 'Ilmoittautuneet',
-    note: 'Ajantasainen osallistujalista julkaistaan tähän',
-  },
-  {
-    id: 'tulokset',
-    label: 'Tulokset',
-    note: 'Tulokset julkaistaan kilpailupäivän jälkeen',
-  },
-]
-
-export const competitorInfoCards = [
-  {
-    title: 'Luokat',
-    description: 'Viralliset kilpailuluokat vahvistetaan kilpailukutsussa. Rakenne palvelee nuorempia, harrastavia ja kokeneempia kilpailijoita.',
-  },
-  {
-    title: 'Ilmoittautuminen',
-    description: 'Ilmoittautuminen avautuu kilpailukutsun yhteydessä. Lähtölistat ja viimeiset ohjeet julkaistaan ennen kisapäivää.',
-  },
-  {
-    title: 'Varustus',
-    description: 'Kilpailija vastaa oman kaluston kunnosta ja omista kilpailuvarusteistaan. Tarkemmat varusteohjeet ilmoitetaan kutsussa.',
-  },
-  {
-    title: 'Kilpailupäivä',
-    description: 'Paikalle kannattaa tulla ajoissa. Kisainfo, sektorit ja mahdolliset harjoitteluajat käydään läpi ennen lähtöjä.',
   },
 ]
 

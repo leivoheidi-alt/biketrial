@@ -129,7 +129,6 @@ export default async function BikeFestLandingPage() {
     { label: 'Perheille', href: '#perheille' },
     { label: 'Saapuminen', href: '#saapuminen' },
     { label: 'Yrityksille', href: '#yrityksille' },
-    { label: 'Kilpailijoille', href: '#kilpailijoille' },
   ] as const
   const fullSchedule: ScheduleItem[] = [
     {
@@ -141,20 +140,6 @@ export default async function BikeFestLandingPage() {
     },
     {
       segment: 'AAMU',
-      time: '10.45–11.00',
-      category: 'BIKETRIAL',
-      title: 'Kilpailun avaus ja info',
-      emphasis: 'secondary',
-    },
-    {
-      segment: 'AAMU',
-      time: '11.00–14.00',
-      category: 'BIKETRIAL',
-      title: 'Elite-luokkien semifinaalit',
-      emphasis: 'primary',
-    },
-    {
-      segment: 'AAMU',
       time: '11.30',
       category: 'BMX',
       title: 'BMX-näytös',
@@ -162,11 +147,11 @@ export default async function BikeFestLandingPage() {
     },
     {
       segment: 'PÄIVÄ',
-      time: '12.00–15.00',
+      time: '12.00–16.00',
       category: 'BIKETRIAL',
-      title: 'Muut luokat',
-      description: 'Kilpailuaika 3 h',
-      emphasis: 'secondary',
+      title: 'Biketrial Suomen Cup',
+      description: 'Kilpailuaika 4 h',
+      emphasis: 'primary',
     },
     {
       segment: 'PÄIVÄ',
@@ -191,13 +176,6 @@ export default async function BikeFestLandingPage() {
     },
     {
       segment: 'PÄIVÄ',
-      time: '15.00–17.00',
-      category: 'BIKETRIAL',
-      title: 'Elite-luokkien finaalit, naiset aloittavat',
-      emphasis: 'primary',
-    },
-    {
-      segment: 'PÄIVÄ',
       time: '15.00',
       category: 'SKEITTI',
       title: 'Naiset + muunsukupuoliset',
@@ -212,7 +190,7 @@ export default async function BikeFestLandingPage() {
     },
     {
       segment: 'PÄIVÄ',
-      time: '17.00',
+      time: '16.00',
       category: 'BIKETRIAL',
       title: 'Palkintojenjako',
       emphasis: 'secondary',
@@ -293,14 +271,14 @@ export default async function BikeFestLandingPage() {
 
   return (
     <>
-      <div className="sticky top-16 z-40 bg-[#FF6A00] border-b border-black/10">
+      <div className="sticky top-16 z-40 border-b border-black/10 bg-[#FF6A00] md:top-20">
         <div className="section-container py-4 sm:py-5">
           <nav aria-label="BikeFest pikanavigaatio" className="flex flex-wrap justify-center gap-2.5">
             {quickNavItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="inline-flex items-center justify-center rounded-full border border-white/55 bg-black/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white transition-colors hover:bg-black/18 hover:border-white/80"
+                className="inline-flex items-center justify-center rounded-full border border-white/55 bg-black/10 px-4 py-2 text-[0.78rem] font-bold uppercase tracking-[0.12em] text-white transition-colors hover:bg-black/18 hover:border-white/80"
               >
                 {item.label}
               </a>
@@ -334,11 +312,11 @@ export default async function BikeFestLandingPage() {
           style={{ background: 'radial-gradient(circle, #FF6A00 0%, transparent 70%)' }}
         />
 
-        <div className="section-container relative z-10 pt-[50px] pb-[50px]">
+        <div className="section-container relative z-10 py-10 sm:pt-[50px] sm:pb-[50px]">
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:gap-10 items-stretch">
             <div className="flex h-full flex-col justify-start">
               <h1
-                className="text-[clamp(3rem,9vw,5rem)] text-white leading-none mb-6"
+                className="mb-5 text-[clamp(2.45rem,10vw,5rem)] leading-[0.94] text-white"
                 style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 <>
@@ -348,15 +326,15 @@ export default async function BikeFestLandingPage() {
                   <span className="text-white text-[0.52em] leading-[1.08]">{eventDate}</span>
                 </>
               </h1>
-              <p className="text-[#C8C8C8] text-[1.1rem] sm:text-[1.18rem] max-w-2xl leading-[1.76] mb-4">
+              <p className="mb-4 max-w-2xl text-[1rem] leading-[1.72] text-[#C8C8C8] sm:text-[1.18rem]">
                 {heroDescription}
               </p>
-              <p className="text-[#C8C8C8] text-[1.06rem] sm:text-[1.12rem] max-w-2xl leading-[1.76] mb-0">
+              <p className="mb-0 max-w-2xl text-[0.98rem] leading-[1.72] text-[#C8C8C8] sm:text-[1.12rem]">
                 {heroDescriptionSecondary}
               </p>
             </div>
 
-            <div className="relative flex h-full min-h-[420px] items-stretch justify-center overflow-hidden rounded-2xl lg:min-h-0">
+            <div className="relative flex h-full min-h-[260px] items-stretch justify-center overflow-hidden rounded-2xl sm:min-h-[340px] lg:min-h-0">
               <BikefestHeroMedia
                 fallbackSrc="/images/tapahtuma.webp"
                 fallbackAlt="BikeFest Hämeenlinna 2026 pyöräilytapahtuman tunnelmaa"
@@ -373,7 +351,7 @@ export default async function BikeFestLandingPage() {
           <div id="miksi-tulla" className="scroll-mt-20" />
           <div className="eyebrow mb-5 text-center">Nostot</div>
           <h2
-            className="text-[clamp(2.2rem,5vw,4rem)] text-white mb-10 leading-none text-center"
+            className="mb-8 text-center text-[clamp(2rem,6vw,4rem)] leading-[0.95] text-white sm:mb-10"
             style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
           >
             Neljä syytä tulla<br />
@@ -400,11 +378,11 @@ export default async function BikeFestLandingPage() {
                     }}
                   />
                 </div>
-                <div className="p-6">
+                <div className="p-5 sm:p-6">
                   <h3 className="mb-2 text-[1.24rem] font-bold uppercase tracking-wide leading-[1.26] text-white sm:text-[1.28rem]">
                     {item.title}
                   </h3>
-                  <div className="text-[1.04rem] leading-[1.76] text-[#D7D7D7]">
+                  <div className="text-[1rem] leading-[1.72] text-[#D7D7D7] sm:text-[1.04rem]">
                     {item.description}
                   </div>
                 </div>
@@ -419,7 +397,7 @@ export default async function BikeFestLandingPage() {
           <div className="mb-10">
             <div className="eyebrow mb-5">Ohjelma</div>
             <h2
-              className="text-[clamp(2.2rem,5vw,4rem)] text-white leading-none"
+              className="text-[clamp(2rem,6vw,4rem)] leading-[0.95] text-white"
               style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
             >
               Päivän ohjelma
@@ -429,7 +407,7 @@ export default async function BikeFestLandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_320px] gap-8 items-start">
+          <div className="grid grid-cols-1 gap-6 items-start lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-8">
             <div className="max-w-4xl overflow-hidden rounded-2xl border border-[#2A2A2A] bg-[#111111]">
               {scheduleSections.map((section, sectionIndex) => (
                 <div key={section.label} className={sectionIndex > 0 ? 'border-t border-white/10' : ''}>
@@ -441,7 +419,7 @@ export default async function BikeFestLandingPage() {
                     {section.items.map((item) => (
                       <div
                         key={`${item.time}-${item.category}-${item.title}`}
-                        className={`grid grid-cols-1 gap-3 px-5 py-5 md:grid-cols-[152px_minmax(0,1fr)] md:gap-6 md:px-6 ${scheduleRowStyles[item.category]} ${scheduleEmphasisStyles[item.emphasis]}`}
+                        className={`grid grid-cols-1 gap-3 px-4 py-4 sm:px-5 sm:py-5 md:grid-cols-[152px_minmax(0,1fr)] md:gap-6 md:px-6 ${scheduleRowStyles[item.category]} ${scheduleEmphasisStyles[item.emphasis]}`}
                       >
                         <div className="flex flex-col gap-1">
                           <span className="text-[#FF6A00] text-[0.95rem] font-bold leading-none tabular-nums sm:text-[1.05rem]">
@@ -454,7 +432,7 @@ export default async function BikeFestLandingPage() {
                               {item.title}
                             </div>
                             <span
-                              className={`inline-flex shrink-0 rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.14em] ${scheduleCategoryStyles[item.category]}`}
+                              className={`inline-flex shrink-0 rounded-full border px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-[0.12em] ${scheduleCategoryStyles[item.category]}`}
                             >
                               {item.category}
                             </span>
@@ -500,9 +478,6 @@ export default async function BikeFestLandingPage() {
                 />
               </div>
 
-              <Link href="/bikefest/kilpailijoille" className="btn-outline mt-6 w-full justify-center text-xs">
-                Kilpailijoiden tiedot
-              </Link>
             </aside>
           </div>
         </div>
@@ -514,7 +489,7 @@ export default async function BikeFestLandingPage() {
             <div className="max-w-2xl">
               <div className="eyebrow mb-5">Perheille</div>
               <h2
-                className="text-[clamp(2rem,5vw,3.5rem)] text-white mb-6 leading-none"
+                className="mb-6 text-[clamp(1.9rem,6vw,3.5rem)] leading-[0.96] text-white"
                 style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 Päivä, jossa riittää<br />
@@ -571,13 +546,13 @@ export default async function BikeFestLandingPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent" />
                 </div>
                 <div className="p-6">
-                  <div className="mb-3 text-[0.92rem] font-bold uppercase tracking-[0.14em] text-[#FF6A00]">
+                  <div className="mb-3 text-[0.88rem] font-bold uppercase tracking-[0.12em] text-[#FF6A00] sm:text-[0.92rem]">
                     Perhealue
                   </div>
                   <h3 className="mb-2 text-[1.42rem] font-bold leading-[1.2] text-white">
                     Lapsille tekemistä
                   </h3>
-                  <p className="text-[1.04rem] leading-[1.76] text-[#D7D7D7]">
+                  <p className="text-[1rem] leading-[1.72] text-[#D7D7D7] sm:text-[1.04rem]">
                     Lasten temppurata ja ohjattua toimintaa.
                   </p>
                 </div>
@@ -594,13 +569,13 @@ export default async function BikeFestLandingPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent" />
                 </div>
                 <div className="p-6">
-                  <div className="mb-3 text-[0.92rem] font-bold uppercase tracking-[0.14em] text-[#FF6A00]">
+                  <div className="mb-3 text-[0.88rem] font-bold uppercase tracking-[0.12em] text-[#FF6A00] sm:text-[0.92rem]">
                     Alueella
                   </div>
                   <h3 className="mb-2 text-[1.42rem] font-bold leading-[1.2] text-white">
                     Katso, koe ja innostu
                   </h3>
-                  <p className="text-[1.04rem] leading-[1.76] text-[#D7D7D7]">
+                  <p className="text-[1rem] leading-[1.72] text-[#D7D7D7] sm:text-[1.04rem]">
                     Kilpailut, näytökset ja tapahtuman tunnelma.
                   </p>
                 </div>
@@ -616,13 +591,13 @@ export default async function BikeFestLandingPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/5 to-transparent" />
                 </div>
                 <div className="p-6">
-                  <div className="mb-3 text-[0.92rem] font-bold uppercase tracking-[0.14em] text-[#FF6A00]">
+                  <div className="mb-3 text-[0.88rem] font-bold uppercase tracking-[0.12em] text-[#FF6A00] sm:text-[0.92rem]">
                     Alueella
                   </div>
                   <h3 className="mb-2 text-[1.42rem] font-bold leading-[1.2] text-white">
                     Kahvila ja ruokamyynti
                   </h3>
-                  <p className="text-[1.04rem] leading-[1.76] text-[#D7D7D7]">
+                  <p className="text-[1rem] leading-[1.72] text-[#D7D7D7] sm:text-[1.04rem]">
                     Syötävää ja juotavaa koko päivän ajan.
                   </p>
                 </div>
@@ -638,7 +613,7 @@ export default async function BikeFestLandingPage() {
             <div>
               <div className="eyebrow mb-5">Saapuminen ja info</div>
               <h2
-                className="text-[clamp(2rem,5vw,3.5rem)] text-white mb-6 leading-none"
+                className="mb-6 text-[clamp(1.9rem,6vw,3.5rem)] leading-[0.96] text-white"
                 style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 Helppo tulla,<br />
@@ -650,7 +625,7 @@ export default async function BikeFestLandingPage() {
             </div>
 
             <div className="rounded-2xl border border-[#2A2A2A] bg-[#111111] p-6">
-              <div className="text-[#FF6A00] text-[1.2rem] font-bold uppercase tracking-[0.08em] leading-[1.15] mb-4">
+              <div className="mb-4 text-[1.12rem] font-bold uppercase tracking-[0.06em] leading-[1.2] text-[#FF6A00] sm:text-[1.2rem]">
                 Kävijälle nopeasti
               </div>
               <div className="space-y-4">
@@ -666,11 +641,6 @@ export default async function BikeFestLandingPage() {
                   </div>
                 ))}
               </div>
-              <div className="mt-6">
-                <Link href="/bikefest/kilpailijoille" className="btn-outline w-full justify-center text-xs">
-                  Kilpailijoiden tarkemmat tiedot
-                </Link>
-              </div>
             </div>
           </div>
         </div>
@@ -681,7 +651,7 @@ export default async function BikeFestLandingPage() {
           <div className="max-w-4xl">
             <div className="eyebrow mb-5">Laji ja tapahtuma</div>
             <h2
-              className="mb-6 text-[clamp(2rem,4.8vw,3.4rem)] leading-none text-white"
+              className="mb-6 text-[clamp(1.9rem,5.8vw,3.4rem)] leading-[0.96] text-white"
               style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
             >
               Mitä on biketrial<br />
@@ -707,14 +677,14 @@ export default async function BikeFestLandingPage() {
         <div className="section-container">
           <div className="eyebrow mb-5 text-center">Lisätiedot</div>
           <h2
-            className="text-[clamp(2.2rem,5vw,4rem)] text-white mb-10 leading-none text-center"
+            className="mb-10 text-center text-[clamp(2rem,6vw,4rem)] leading-[0.95] text-white"
             style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
           >
             Etsitkö tarkempaa<br />
             <span className="text-[#FF6A00]">BikeFest-infoa?</span>
           </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             <Link id="yrityksille" href="/bikefest/näytteilleasettajat" className="group rounded-2xl border border-[#2A2A2A] bg-[#111111] p-8 transition-colors hover:border-[#FF6A00]/50">
               <div className="eyebrow mb-4">Näytteilleasettajille</div>
               <h3
@@ -725,21 +695,6 @@ export default async function BikeFestLandingPage() {
               </h3>
               <p className="text-[#D1D1D1] text-[1.02rem] leading-[1.74]">
                 Ständit, myynti ja näkyvyys tapahtumassa.
-              </p>
-            </Link>
-
-            <Link id="kilpailijoille" href="/bikefest/kilpailijoille" className="group rounded-2xl border border-[#2A2A2A] bg-[#111111] p-8 transition-colors hover:border-[#FF6A00]/50">
-              <div className="eyebrow mb-4">Lisätiedot</div>
-              <h3
-                className="text-4xl text-white leading-none mb-4"
-                style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
-              >
-                Aikataulu,<br />
-                kilpailu ja<br />
-                <span className="text-[#FF6A00]">yhteystiedot</span>
-              </h3>
-              <p className="text-[#D1D1D1] text-[1.02rem] leading-[1.74]">
-                Kaikki tarvittava tieto yhdestä paikasta.
               </p>
             </Link>
           </div>

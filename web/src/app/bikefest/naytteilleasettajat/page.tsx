@@ -129,7 +129,7 @@ function TargetCard({
   alt: string
 }) {
   return (
-    <div className="group relative h-[420px] overflow-hidden rounded-[6px] border border-white/10 bg-[#111111] shadow-[0_18px_40px_rgba(0,0,0,0.35)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#FF6A00]/70 hover:shadow-[0_20px_46px_rgba(255,106,0,0.16)]">
+    <div className="group relative h-[340px] overflow-hidden rounded-[6px] border border-white/10 bg-[#111111] shadow-[0_18px_40px_rgba(0,0,0,0.35)] transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#FF6A00]/70 hover:shadow-[0_20px_46px_rgba(255,106,0,0.16)] sm:h-[420px]">
       <VisualLayer
         sanityImage={sanityImage}
         fallbackSrc={fallbackSrc}
@@ -257,7 +257,7 @@ export default async function BikefestPartnersPage() {
           />
           <div
             aria-hidden
-            className="absolute -right-16 top-8 h-[420px] w-[420px] rounded-full blur-[40px]"
+            className="absolute -right-20 top-8 h-[260px] w-[260px] rounded-full blur-[32px] sm:h-[420px] sm:w-[420px] sm:blur-[40px]"
             style={{
               background:
                 'radial-gradient(circle, rgba(255,102,0,0.22) 0%, rgba(255,102,0,0.10) 22%, rgba(255,102,0,0.00) 60%)',
@@ -274,7 +274,7 @@ export default async function BikefestPartnersPage() {
           />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-[1280px] px-5 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
           <div className="mx-auto max-w-[940px] text-center">
             <div className="mx-auto max-w-[840px]">
               <div className="mb-5 text-[0.92rem] font-bold uppercase tracking-[0.08em] text-[#FF6A00] sm:text-[1rem]">
@@ -282,7 +282,7 @@ export default async function BikefestPartnersPage() {
               </div>
 
               <h1
-                className="mb-8 text-[clamp(3rem,6vw,5.15rem)] font-black leading-[0.9] text-white"
+                className="mb-7 text-[clamp(2.3rem,9vw,5.15rem)] font-black leading-[0.92] text-white"
                 style={{
                   fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                   textTransform: 'uppercase',
@@ -296,7 +296,7 @@ export default async function BikefestPartnersPage() {
                 <span className="block text-[#FF6A00]">läsnäoloa</span>
               </h1>
 
-              <p className="mx-auto max-w-[760px] text-[1.14rem] leading-[1.62] text-[#B0B0B0] sm:text-[1.22rem]">
+              <p className="mx-auto max-w-[760px] text-[1rem] leading-[1.68] text-[#B0B0B0] sm:text-[1.22rem]">
                 Liity BikeFestin näytteilleasettajiin ja kohtaa yleisö
                 ympäristössä, jossa tuotteet, palvelut ja kokemukset tuntuvat
                 oikeilta.
@@ -319,7 +319,7 @@ export default async function BikefestPartnersPage() {
         <div className="section-container">
           <div className="mb-12 flex flex-col items-center text-center">
             <h2
-              className="text-[clamp(2.9rem,5.6vw,4.8rem)] uppercase leading-[0.95] text-white"
+              className="text-[clamp(2.15rem,7vw,4.8rem)] uppercase leading-[0.95] text-white"
               style={{
                 fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                 letterSpacing: '-0.03em',
@@ -330,19 +330,19 @@ export default async function BikefestPartnersPage() {
             <div className="mt-4 h-[5px] w-[150px] rounded-full bg-[#FF6A00] shadow-[0_0_24px_rgba(255,106,0,0.35)]" />
           </div>
 
-          <div className="my-[60px] grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-4">
+          <div className="my-10 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4 sm:my-[60px] sm:gap-7">
             {benefitCards.map((item) => (
               <div
                 key={item.title}
-                className="brand-card brand-card-hover group rounded-[6px] px-8 py-12 text-center shadow-[0_14px_34px_rgba(0,0,0,0.32)]"
+                className="brand-card brand-card-hover group rounded-[6px] px-6 py-9 text-center shadow-[0_14px_34px_rgba(0,0,0,0.32)] sm:px-8 sm:py-12"
               >
                 <div className="mb-7 flex justify-center">
-                  <div className="flex h-[130px] w-[130px] items-center justify-center rounded-full border border-[#FF6A00]/45 bg-[radial-gradient(circle_at_center,rgba(255,106,0,0.13)_0%,rgba(255,106,0,0.05)_38%,rgba(0,0,0,0)_72%)] shadow-[0_0_32px_rgba(255,106,0,0.18)] transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:shadow-[0_0_42px_rgba(255,106,0,0.26)]">
+                  <div className="flex h-[112px] w-[112px] items-center justify-center rounded-full border border-[#FF6A00]/45 bg-[radial-gradient(circle_at_center,rgba(255,106,0,0.13)_0%,rgba(255,106,0,0.05)_38%,rgba(0,0,0,0)_72%)] shadow-[0_0_32px_rgba(255,106,0,0.18)] transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:shadow-[0_0_42px_rgba(255,106,0,0.26)] sm:h-[130px] sm:w-[130px]">
                     <BenefitIcon kind={item.icon} />
                   </div>
                 </div>
                 <h3
-                  className="mb-4 text-[1.52rem] uppercase text-white"
+                  className="mb-4 text-[1.36rem] uppercase text-white sm:text-[1.52rem]"
                   style={{
                     fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                     letterSpacing: '-0.03em',
@@ -350,7 +350,7 @@ export default async function BikefestPartnersPage() {
                 >
                   {item.title}
                 </h3>
-                <p className="text-[1.04rem] leading-[1.72] text-[#B8B8B8]">{item.body}</p>
+                <p className="text-[1rem] leading-[1.68] text-[#B8B8B8] sm:text-[1.04rem]">{item.body}</p>
               </div>
             ))}
           </div>
@@ -361,7 +361,7 @@ export default async function BikefestPartnersPage() {
         <div className="section-container">
           <div className="mb-14 flex flex-col items-center text-center">
             <h2
-              className="text-[clamp(2.7rem,5.8vw,4.9rem)] uppercase leading-[0.96] text-white"
+              className="text-[clamp(2rem,6.8vw,4.9rem)] uppercase leading-[0.96] text-white"
               style={{
                 fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                 letterSpacing: '-0.03em',
@@ -372,7 +372,7 @@ export default async function BikefestPartnersPage() {
             <div className="mt-4 h-[5px] w-[148px] rounded-full bg-[#FF6A00] shadow-[0_0_24px_rgba(255,106,0,0.42)]" />
           </div>
 
-          <div className="grid grid-cols-1 gap-7 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 sm:gap-7">
             <TargetCard
               title="Lapsiperheet"
               sanityImage={bikefest?.familyAreaBlock?.familyAreaImage}
@@ -399,7 +399,7 @@ export default async function BikefestPartnersPage() {
         <div className="section-container" id="paketit">
           <div className="mx-auto mb-14 max-w-[880px] text-center">
             <h2
-              className="text-[clamp(2.6rem,5.8vw,4.5rem)] uppercase leading-[0.96] text-white"
+              className="text-[clamp(1.9rem,6.6vw,4.5rem)] uppercase leading-[0.96] text-white"
               style={{
                 fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                 letterSpacing: '-0.03em',
@@ -413,24 +413,24 @@ export default async function BikefestPartnersPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 gap-[30px] lg:grid-cols-3">
+          <div className="mt-10 grid grid-cols-1 gap-5 lg:grid-cols-3 sm:mt-12 sm:gap-[30px]">
             {packageCards.map((item) => (
               <div
                 key={item.title}
-                className={`relative border p-12 text-left ${
+                className={`relative border p-6 text-left sm:p-8 lg:p-12 ${
                   item.featured
                     ? 'border-[#FF6A00] bg-[#1A1A1A]'
                     : 'border-[#222] bg-[#111]'
                 }`}
               >
                 {item.featured ? (
-                  <div className="absolute right-5 top-5 bg-[#FF6A00] px-3 py-1 text-[0.7rem] font-black uppercase text-white">
+                  <div className="absolute right-4 top-4 bg-[#FF6A00] px-3 py-1 text-[0.7rem] font-black uppercase text-white sm:right-5 sm:top-5">
                     Suosituin
                   </div>
                 ) : null}
 
                 <h3
-                  className="max-w-[280px] text-[1.52rem] leading-[1.08] text-white"
+                  className="max-w-[280px] text-[1.32rem] leading-[1.08] text-white sm:text-[1.52rem]"
                   style={{
                     fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                     textTransform: 'uppercase',
@@ -441,7 +441,7 @@ export default async function BikefestPartnersPage() {
                 </h3>
 
                 <div
-                  className="my-5 text-[3rem] font-black leading-none text-[#FF6A00]"
+                  className="my-5 text-[2.55rem] font-black leading-none text-[#FF6A00] sm:text-[3rem]"
                   style={{
                     fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                   }}
@@ -450,14 +450,14 @@ export default async function BikefestPartnersPage() {
                 </div>
 
                 {item.summary ? (
-                  <p className="mb-6 text-[1.04rem] leading-[1.72] text-[#D0D0D0]">
+                  <p className="mb-6 text-[1rem] leading-[1.72] text-[#D0D0D0] sm:text-[1.04rem]">
                     {item.summary}
                   </p>
                 ) : null}
 
                 <ul className="mb-0 space-y-3 text-[#B0B0B0]">
                   {item.items.map((point) => (
-                    <li key={point} className="relative pl-5 text-[1.03rem] leading-[1.72] text-white">
+                    <li key={point} className="relative pl-5 text-[1rem] leading-[1.72] text-white sm:text-[1.03rem]">
                       <span className="absolute left-0 text-[#FF6A00]">✓</span>
                       {point}
                     </li>
@@ -466,7 +466,7 @@ export default async function BikefestPartnersPage() {
 
                 <a
                   href={item.ctaHref}
-                  className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-8 py-4 text-center text-sm font-extrabold uppercase tracking-[0.12em] transition duration-300 hover:scale-[1.03] ${
+                  className={`mt-6 inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-center text-sm font-extrabold uppercase tracking-[0.1em] transition duration-300 hover:scale-[1.03] sm:px-8 sm:py-4 sm:tracking-[0.12em] ${
                     item.featured
                       ? 'bg-[linear-gradient(135deg,#ff6a00_0%,#ff8c00_100%)] text-white'
                       : 'border-2 border-white text-white'
@@ -478,9 +478,9 @@ export default async function BikefestPartnersPage() {
             ))}
           </div>
 
-          <div className="mx-auto mt-14 max-w-[860px] rounded-[10px] border border-white/10 bg-[linear-gradient(180deg,#1a1a1a_0%,#111111_100%)] px-8 py-10 text-center shadow-[0_18px_40px_rgba(0,0,0,0.28)]">
+          <div className="mx-auto mt-12 max-w-[860px] rounded-[10px] border border-white/10 bg-[linear-gradient(180deg,#1a1a1a_0%,#111111_100%)] px-5 py-8 text-center shadow-[0_18px_40px_rgba(0,0,0,0.28)] sm:mt-14 sm:px-8 sm:py-10">
             <h3
-              className="text-[1.9rem] uppercase text-white"
+              className="text-[1.55rem] uppercase text-white sm:text-[1.9rem]"
               style={{
                 fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                 letterSpacing: '-0.03em',
@@ -488,10 +488,10 @@ export default async function BikefestPartnersPage() {
             >
               Varaa osasto
             </h3>
-            <p className="mx-auto mt-4 max-w-[620px] text-[1.04rem] leading-[1.7] text-[#C4C4C4]">
+            <p className="mx-auto mt-4 max-w-[620px] text-[1rem] leading-[1.72] text-[#C4C4C4] sm:text-[1.04rem]">
               Kysy vapaata paikkaa ja yrityksellesi sopivaa toteutusta.
             </p>
-            <div className="mt-6 space-y-2 text-[1.18rem] font-medium text-white">
+            <div className="mt-6 space-y-2 text-[1.04rem] font-medium text-white sm:text-[1.18rem]">
               <div>info@biketrial.fi</div>
               <div>Mikko Leivo 040 973 2939</div>
             </div>
@@ -505,7 +505,7 @@ export default async function BikefestPartnersPage() {
         </div>
       </section>
 
-      <section className="mt-[84px] bg-[linear-gradient(135deg,#ff6a00_0%,#ff8c00_100%)] px-5 py-[88px] text-center">
+      <section className="mt-12 bg-[linear-gradient(135deg,#ff6a00_0%,#ff8c00_100%)] px-4 py-14 text-center sm:mt-[84px] sm:px-5 sm:py-[88px]">
         <div className="section-container">
           <h2
             className="mb-3 text-[clamp(2.6rem,6vw,3.5rem)] uppercase text-white"

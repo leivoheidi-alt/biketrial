@@ -170,7 +170,7 @@ export default function SponsorikumppanitPage() {
           />
           <div
             aria-hidden
-            className="absolute -right-16 top-8 h-[420px] w-[420px] rounded-full blur-[40px]"
+            className="absolute -right-20 top-8 h-[260px] w-[260px] rounded-full blur-[32px] sm:h-[420px] sm:w-[420px] sm:blur-[40px]"
             style={{
               background:
                 'radial-gradient(circle, rgba(255,102,0,0.22) 0%, rgba(255,102,0,0.10) 22%, rgba(255,102,0,0.00) 60%)',
@@ -187,14 +187,14 @@ export default function SponsorikumppanitPage() {
           />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-[1280px] px-5 py-20 sm:px-6 sm:py-24 lg:px-8">
+        <div className="relative z-10 mx-auto max-w-[1280px] px-4 py-14 sm:px-6 sm:py-24 lg:px-8">
           <div className="mx-auto max-w-[840px] text-center">
             <div className="mb-5 text-[0.92rem] font-bold uppercase tracking-[0.08em] text-[#FF6A00] sm:text-[1rem]">
               BIKEFEST 2026
             </div>
 
             <h1
-              className="mb-8 text-[clamp(3rem,6vw,5.15rem)] font-black leading-[0.9] text-white"
+              className="mb-7 text-[clamp(2.3rem,9vw,5.15rem)] font-black leading-[0.92] text-white"
               style={{
                 fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                 textTransform: 'uppercase',
@@ -205,7 +205,7 @@ export default function SponsorikumppanitPage() {
               <span className="block text-[#FF6A00]">BikeFestiä</span>
             </h1>
 
-            <p className="mx-auto max-w-[640px] text-[1.18rem] leading-[1.58] text-[#B0B0B0] sm:text-[1.24rem]">
+            <p className="mx-auto max-w-[640px] text-[1rem] leading-[1.68] text-[#B0B0B0] sm:text-[1.24rem]">
               Kohtaa perheet, nuoret ja harrastajat siellä, missä tapahtuu.
             </p>
 
@@ -224,13 +224,13 @@ export default function SponsorikumppanitPage() {
       <section className="bg-black py-[76px]">
         <div className="section-container">
           <div className="mb-12 text-center">
-            <h2 className="text-[clamp(2.5rem,5vw,4.2rem)] uppercase leading-[0.95] text-white">
+            <h2 className="text-[clamp(2rem,6.8vw,4.2rem)] uppercase leading-[0.95] text-white">
               Miksi sponsoriksi
             </h2>
             <div className="mx-auto mt-5 h-[5px] w-[210px] rounded-full bg-[#FF6A00] shadow-[0_0_18px_rgba(255,106,0,0.26)]" />
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4 sm:gap-6">
             {whyCards.map((card) => {
               const iconKind =
                 card.title === 'Kohtaamiset'
@@ -247,12 +247,12 @@ export default function SponsorikumppanitPage() {
                   className="brand-card brand-card-hover group rounded-[6px] px-8 py-12 text-center shadow-[0_14px_34px_rgba(0,0,0,0.32)]"
                 >
                   <div className="mb-9 flex justify-center">
-                    <div className="flex h-[130px] w-[130px] items-center justify-center rounded-full border border-[#FF6A00]/45 bg-[radial-gradient(circle_at_center,rgba(255,106,0,0.13)_0%,rgba(255,106,0,0.05)_38%,rgba(0,0,0,0)_72%)] shadow-[0_0_32px_rgba(255,106,0,0.18)] transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:shadow-[0_0_42px_rgba(255,106,0,0.26)]">
+                  <div className="flex h-[112px] w-[112px] items-center justify-center rounded-full border border-[#FF6A00]/45 bg-[radial-gradient(circle_at_center,rgba(255,106,0,0.13)_0%,rgba(255,106,0,0.05)_38%,rgba(0,0,0,0)_72%)] shadow-[0_0_32px_rgba(255,106,0,0.18)] transition-all duration-300 ease-out group-hover:scale-[1.03] group-hover:shadow-[0_0_42px_rgba(255,106,0,0.26)] sm:h-[130px] sm:w-[130px]">
                       <BenefitIcon kind={iconKind} />
                     </div>
                   </div>
 
-                  <h3 className="text-[1.56rem] uppercase leading-[1.02] text-white">{card.title}</h3>
+                  <h3 className="text-[1.36rem] uppercase leading-[1.02] text-white sm:text-[1.56rem]">{card.title}</h3>
                   <p className="mx-auto mt-6 max-w-[250px] text-[1rem] leading-[1.72] text-[#D0D0D0]">
                     {card.text}
                   </p>
@@ -266,32 +266,32 @@ export default function SponsorikumppanitPage() {
       <section className="bg-[#050505] py-[84px]">
         <div className="section-container">
           <div className="mx-auto mb-14 max-w-[860px] text-center">
-            <h2 className="text-[clamp(2.7rem,5.4vw,4.6rem)] uppercase leading-[0.95] text-white">
+            <h2 className="text-[clamp(2rem,6.8vw,4.6rem)] uppercase leading-[0.95] text-white">
               Valitse roolisi BikeFestissä
             </h2>
-            <p className="mt-5 text-[1.06rem] leading-[1.65] text-[#CFCFCF] sm:text-[1.12rem]">
+            <p className="mt-5 text-[1rem] leading-[1.68] text-[#CFCFCF] sm:text-[1.12rem]">
               Sponsorina voit näkyä, omistaa osan tapahtumaa tai olla mukana ohjelmassa ja sisällöissä.
             </p>
           </div>
 
-          <div className="my-[60px] grid grid-cols-1 gap-[30px] md:grid-cols-2 xl:grid-cols-3">
+          <div className="my-10 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3 sm:my-[60px] sm:gap-[30px]">
             {sponsorPackages.map((pkg) => (
               <div
                 key={pkg.title}
-                className={`relative flex min-h-[620px] flex-col border p-12 text-left ${
+                className={`relative flex min-h-[520px] flex-col border p-6 text-left sm:min-h-[580px] sm:p-8 lg:min-h-[620px] lg:p-12 ${
                   pkg.featured
                     ? 'border-[#FF6A00] bg-[#1A1A1A]'
                     : 'border-[#222] bg-[#111]'
                 }`}
               >
                 {pkg.badgeLabel ? (
-                  <div className="absolute right-5 top-5 bg-[#FF6A00] px-3 py-1 text-[0.7rem] font-black uppercase text-white">
+                  <div className="absolute right-4 top-4 bg-[#FF6A00] px-3 py-1 text-[0.7rem] font-black uppercase text-white sm:right-5 sm:top-5">
                     {pkg.badgeLabel}
                   </div>
                 ) : null}
 
                 <h3
-                  className="mt-8 max-w-[290px] text-[1.44rem] leading-[1.06] text-white sm:text-[1.5rem]"
+                  className="mt-8 max-w-[290px] text-[1.28rem] leading-[1.06] text-white sm:text-[1.5rem]"
                   style={{
                     fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                     letterSpacing: '0',
@@ -304,7 +304,7 @@ export default function SponsorikumppanitPage() {
                   ))}
                 </h3>
                 <div
-                  className="my-5 text-[3rem] font-black leading-none text-[#FF6A00]"
+                  className="my-5 text-[2.45rem] font-black leading-none text-[#FF6A00] sm:text-[3rem]"
                   style={{
                     fontFamily: 'var(--font-montserrat), var(--font-anton), Impact, sans-serif',
                   }}
@@ -312,13 +312,13 @@ export default function SponsorikumppanitPage() {
                   {pkg.price}
                 </div>
 
-                <p className="mb-10 max-w-[320px] text-[1.06rem] leading-[1.72] text-[#D0D0D0]">
+                <p className="mb-8 max-w-[320px] text-[1rem] leading-[1.72] text-[#D0D0D0] sm:mb-10 sm:text-[1.06rem]">
                   {pkg.text}
                 </p>
 
                 <ul className="mb-0 space-y-5 text-[#B0B0B0]">
                   {pkg.items.map((item) => (
-                    <li key={item} className="relative pl-5 text-[1.05rem] leading-[1.72] text-white">
+                    <li key={item} className="relative pl-5 text-[1rem] leading-[1.72] text-white sm:text-[1.05rem]">
                       <span className="absolute left-0 text-[#FF6A00]">✓</span>
                       {item}
                     </li>
@@ -327,7 +327,7 @@ export default function SponsorikumppanitPage() {
 
                 <a
                   href={sponsorMail}
-                  className={`mt-auto inline-flex w-full items-center justify-center rounded-full px-8 py-4 text-center text-sm font-extrabold uppercase tracking-[0.12em] transition duration-300 hover:scale-[1.03] ${
+                  className={`mt-auto inline-flex w-full items-center justify-center rounded-full px-6 py-3.5 text-center text-sm font-extrabold uppercase tracking-[0.1em] transition duration-300 hover:scale-[1.03] sm:px-8 sm:py-4 sm:tracking-[0.12em] ${
                     pkg.featured
                       ? 'bg-[linear-gradient(135deg,#ff6a00_0%,#ff8c00_100%)] text-white'
                       : 'border-2 border-white text-white'
@@ -343,9 +343,9 @@ export default function SponsorikumppanitPage() {
 
       <section className="bg-black py-[76px]">
         <div className="section-container">
-          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_420px]">
+          <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_420px] lg:gap-10">
             <div>
-              <h2 className="text-[clamp(2.5rem,5vw,4rem)] uppercase leading-[0.96] text-white">
+              <h2 className="text-[clamp(2rem,6.5vw,4rem)] uppercase leading-[0.96] text-white">
                 Mitä kumppani saa
               </h2>
 
@@ -356,7 +356,7 @@ export default function SponsorikumppanitPage() {
                   'Kohtaamisia yleisön kanssa',
                   'Sisältöä markkinointiin',
                 ].map((item) => (
-                  <li key={item} className="brand-card rounded-[12px] px-6 py-5 text-[1.02rem] text-white">
+                  <li key={item} className="brand-card rounded-[12px] px-5 py-4 text-[1rem] text-white sm:px-6 sm:py-5 sm:text-[1.02rem]">
                     <span className="mr-2 text-[#FF6A00]">✓</span>
                     {item}
                   </li>
@@ -368,19 +368,19 @@ export default function SponsorikumppanitPage() {
               src="/images/harrastajat-bikefest.webp"
               alt="BikeFestin harrastajia sponsorisivun tukikuvassa"
               badge="Yleisö ja energia"
-              className="min-h-[360px]"
+              className="min-h-[280px] sm:min-h-[360px]"
             />
           </div>
         </div>
       </section>
 
-      <section className="bg-[linear-gradient(135deg,#ff6a00_0%,#ff8c00_100%)] py-[96px]">
+      <section className="bg-[linear-gradient(135deg,#ff6a00_0%,#ff8c00_100%)] py-14 sm:py-[96px]">
         <div className="section-container">
           <div className="mx-auto max-w-[880px] text-center">
-            <h2 className="text-[clamp(2.8rem,5.5vw,4.7rem)] uppercase leading-[0.95] text-white">
+            <h2 className="text-[clamp(2.1rem,6.8vw,4.7rem)] uppercase leading-[0.95] text-white">
               Rakennetaanko yhteinen juttu?
             </h2>
-            <p className="mx-auto mt-5 max-w-[680px] text-[1.08rem] leading-[1.65] text-white/92">
+            <p className="mx-auto mt-5 max-w-[680px] text-[1rem] leading-[1.68] text-white/92 sm:text-[1.08rem]">
               Kerro lyhyesti, millainen näkyvyys tai rooli sopisi teille.
             </p>
 

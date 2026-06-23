@@ -128,14 +128,14 @@ export default async function SeuraPage() {
           style={{ background: 'radial-gradient(circle, rgba(255,106,0,0.18) 0%, rgba(255,106,0,0) 68%)' }}
         />
 
-        <div className="section-container relative z-10 py-16 sm:py-20 lg:py-24">
+        <div className="section-container relative z-10 py-14 sm:py-20 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] gap-10 xl:gap-14 items-center">
             <div>
               <div className="eyebrow mb-4 text-[1rem]">Biketrial-seura Hämeenlinna</div>
-              <h1 className="mb-6 max-w-[760px] text-[clamp(3rem,8vw,6.2rem)] leading-[0.96] text-white">
+              <h1 className="mb-6 max-w-[760px] text-[clamp(2.45rem,10vw,6.2rem)] leading-[0.96] text-white">
                 Mikä on <span className="text-[#FF6A00]">Biketrial?</span>
               </h1>
-              <p className="mb-7 max-w-2xl text-[1.18rem] leading-[1.8] text-[#D1D1D1] sm:text-[1.28rem]">
+              <p className="mb-7 max-w-2xl text-[1.05rem] leading-[1.74] text-[#D1D1D1] sm:text-[1.28rem]">
                 Polkupyörätrialissa ajetaan haastavia ratoja ilman, että jalka koskee maahan.
                 Laji kehittää tasapainoa, rohkeutta, keskittymistä ja pyöränhallintaa tavalla, jota
                 harva muu laji tarjoaa.
@@ -165,7 +165,7 @@ export default async function SeuraPage() {
             </div>
 
             <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[#111111] shadow-[0_18px_60px_rgba(0,0,0,0.35)]">
-              <div className="relative aspect-[4/5] min-h-[420px] w-full">
+              <div className="relative aspect-[4/5] min-h-[320px] w-full sm:min-h-[420px]">
                 <Image
                   src="/images/fillaritrial.webp"
                   alt="Biketrial-seuran harjoituksissa lapsi ajaa ja perhe seuraa vieressä"
@@ -219,7 +219,7 @@ export default async function SeuraPage() {
             </div>
 
             <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-black">
-              <div className="relative aspect-[4/5] min-h-[380px] w-full">
+              <div className="relative aspect-[4/5] min-h-[300px] w-full sm:min-h-[380px]">
                 {clubPage?.introImage ? (
                   <SanityImage
                     image={clubPage.introImage}
@@ -268,7 +268,7 @@ export default async function SeuraPage() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {audienceCards.map((item) => (
               <div key={item.title} className="group relative overflow-hidden rounded-[24px] border border-white/10 bg-[#111111]">
-                <div className="relative aspect-[4/5] min-h-[320px] w-full">
+                <div className="relative aspect-[4/5] min-h-[280px] w-full sm:min-h-[320px]">
                   <Image
                     src={item.image}
                     alt={item.alt}
@@ -315,7 +315,7 @@ export default async function SeuraPage() {
             </div>
 
             <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-black shadow-[0_18px_60px_rgba(0,0,0,0.35)]">
-              <div className="relative aspect-[4/5] min-h-[420px] w-full">
+              <div className="relative aspect-[4/5] min-h-[320px] w-full sm:min-h-[420px]">
                 <Image
                   src="/images/trial-family.webp"
                   alt="Vanhempi ja lapsi yhteisessä biketrial-harrastuksen hetkessä"
@@ -375,8 +375,8 @@ export default async function SeuraPage() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.18)_0%,rgba(0,0,0,0.24)_30%,rgba(0,0,0,0.48)_100%)]" />
-                  <div className="absolute inset-0 flex items-center justify-center p-6 text-center">
-                    <div className="text-[clamp(1.15rem,2.1vw,1.85rem)] font-bold uppercase tracking-[0.14em] text-white">
+                  <div className="absolute inset-0 flex items-center justify-center p-5 text-center sm:p-6">
+                    <div className="text-[clamp(1.45rem,4.8vw,1.85rem)] font-bold uppercase tracking-[0.04em] text-white">
                       {item.title}
                     </div>
                   </div>
@@ -443,7 +443,7 @@ export default async function SeuraPage() {
                 Torstaina
               </div>
               <h2
-                className="text-[clamp(2.5rem,7vw,5rem)] text-white leading-none mb-6"
+                className="mb-6 text-[clamp(2.15rem,8vw,5rem)] leading-[0.94] text-white"
                 style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
               >
                 7.5.2026 klo 17.30

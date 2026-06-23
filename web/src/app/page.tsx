@@ -72,15 +72,15 @@ export default async function HomePage() {
     <>
       {/* ── FEATURED BANNER IMAGE ───────────────────────────── */}
       <section className="bg-black">
-        <div className="section-container pb-5 pt-10 sm:pb-6 sm:pt-12">
-          <div className="relative overflow-hidden rounded-[28px] border border-[#2A2A2A] bg-[#111111]">
+        <div className="section-container pb-5 pt-6 sm:pb-6 sm:pt-8">
+          <div className="relative min-h-[430px] overflow-hidden rounded-[24px] border border-[#2A2A2A] bg-[#111111] sm:min-h-0 sm:rounded-[28px]">
             <Image
               src={homepageHeroImageSrc}
               alt="BMX, biketrial ja polkupyörätrial osana BikeFest-kulttuuria Hämeenlinnassa"
               width={1920}
               height={1080}
               priority
-              className="h-auto w-full object-contain object-center"
+              className="h-full min-h-[430px] w-full object-cover object-center sm:h-auto sm:min-h-0 sm:object-contain"
               sizes="100vw"
             />
             <div
@@ -131,10 +131,10 @@ export default async function HomePage() {
               }}
             />
 
-            <div className="absolute inset-0 z-10 flex items-center justify-start">
-              <div className="max-w-[min(540px,48%)] px-6 py-7 text-left sm:px-10 sm:py-10 lg:px-12 lg:py-12">
+            <div className="absolute inset-0 z-10 flex items-end justify-start sm:items-center">
+              <div className="w-full max-w-full px-4 py-5 text-left sm:max-w-[min(540px,48%)] sm:px-10 sm:py-10 lg:px-12 lg:py-12">
                 <div className="flex flex-col items-start [&>*]:ml-0 [&>*]:pl-0">
-                  <div className="mb-2 block text-[clamp(0.76rem,1.28vw,1.02rem)] font-medium uppercase tracking-[0.3em] text-white/88">
+                  <div className="mb-2 block text-[0.72rem] font-medium uppercase tracking-[0.24em] text-white/88 sm:text-[clamp(0.76rem,1.28vw,1.02rem)] sm:tracking-[0.3em]">
                     27.6.2026 — Hämeensaari
                   </div>
 
@@ -142,17 +142,17 @@ export default async function HomePage() {
                     className="mb-2 block w-full text-white leading-[0.92]"
                     style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
                   >
-                    <span className="-ml-[0.045em] block text-[clamp(3.6rem,9vw,7.2rem)]">{heroPrimaryTitle}</span>
+                    <span className="block text-[clamp(2.7rem,13vw,7.2rem)] sm:-ml-[0.045em]">{heroPrimaryTitle}</span>
                   </h1>
 
-                  <p className="max-w-xl text-[1.02rem] leading-[1.35] text-white/90 sm:text-[1.2rem]">
+                  <p className="max-w-[22rem] text-[0.95rem] leading-[1.45] text-white/90 sm:max-w-xl sm:text-[1.2rem] sm:leading-[1.35]">
                     {heroSupportingLine}
                   </p>
 
-                  <div className="mt-6 flex">
+                  <div className="mt-5 flex">
                     <Link
                       href="/bikefest"
-                      className="inline-flex items-center gap-3 text-sm font-bold uppercase tracking-[0.18em] text-white/92 transition-colors hover:text-white"
+                      className="inline-flex items-center gap-3 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white/92 transition-colors hover:text-white sm:text-sm sm:tracking-[0.18em]"
                     >
                       <span>Tutustu BikeFestiin</span>
                       <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FF6A00] text-white">
@@ -179,20 +179,16 @@ export default async function HomePage() {
             {/* ─── Card 1 — Alkeiskurssi ─────────────────────── */}
             <Link
               href="/seura#kurssi"
-              className="group relative flex min-h-[400px] flex-col overflow-hidden rounded-2xl transition-all duration-300"
+              className="group relative flex min-h-[380px] flex-col overflow-hidden rounded-2xl transition-all duration-300 sm:min-h-[400px]"
             >
-              <div className="relative h-[190px] overflow-hidden rounded-t-2xl sm:h-[210px]">
+              <div className="relative h-[210px] overflow-hidden rounded-t-2xl sm:h-[210px]">
                 <Image
                   src={homepageFallbackImages.bikefestCardImage}
                   alt="Polkupyörätrialin alkeiskurssi Hämeenlinnassa"
                   fill
-                  className="absolute inset-0 scale-[1.05] object-cover object-center contrast-110 saturate-110 transition-transform duration-500 group-hover:scale-[1.08]"
+                  className="absolute inset-0 object-cover object-center contrast-110 saturate-110 transition-transform duration-500 group-hover:scale-[1.04] sm:scale-[1.05] sm:group-hover:scale-[1.08]"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute right-0 top-0 z-20 flex min-h-[56px] min-w-[88px] flex-col items-center justify-center rounded-[10px] bg-[#FF6A00] px-4 py-2 text-center text-[12px] font-bold uppercase leading-[1.05] tracking-[0.08em] text-white shadow-[0_8px_20px_rgba(0,0,0,0.2)] sm:min-h-[60px] sm:min-w-[96px] sm:text-[13px]">
-                  <span className="block">ALOITA</span>
-                  <span className="block">TRIAL!</span>
-                </div>
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/60 via-black/18 to-transparent"
@@ -202,9 +198,9 @@ export default async function HomePage() {
                   className="pointer-events-none absolute inset-x-0 top-0 h-1"
                   style={{ background: 'linear-gradient(90deg, rgba(255,106,0,0) 0%, rgba(255,106,0,0.92) 45%, rgba(255,106,0,0) 100%)' }}
                 />
-                <div className="absolute inset-x-0 bottom-0 z-10 px-8 pb-7 sm:px-10 sm:pb-8">
+                <div className="absolute inset-x-0 bottom-0 z-10 px-5 pb-5 sm:px-10 sm:pb-8">
                   <h2
-                    className="text-4xl leading-none text-white sm:text-5xl"
+                    className="text-[2rem] leading-none text-white sm:text-5xl"
                     style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
                   >
                     Alkeiskurssi 7.5.2026
@@ -213,7 +209,7 @@ export default async function HomePage() {
               </div>
 
               <div
-                className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-b-2xl p-8 sm:p-10"
+                className="relative flex flex-1 flex-col justify-between overflow-hidden rounded-b-2xl p-5 sm:p-10"
                 style={{ background: 'linear-gradient(145deg, #1C1C1C 0%, #0A0A0A 60%, #111111 100%)' }}
               >
                 <div
@@ -238,6 +234,9 @@ export default async function HomePage() {
                 />
 
                 <div className="relative z-10">
+                  <div className="mb-4 inline-flex items-center rounded-full bg-[#FF6A00] px-4 py-2 text-[0.74rem] font-bold uppercase tracking-[0.12em] text-white sm:hidden">
+                    Aloita trial!
+                  </div>
                   <p className="max-w-sm text-base leading-relaxed text-white/80">
                     Alkeiskurssi on tarkoitettu kaikille aloittelijoille. Et tarvitse aiempaa kokemusta – riittää, että tulet paikalle.
                     <br />
@@ -257,14 +256,9 @@ export default async function HomePage() {
                     </div>
                   )}
                 </div>
-                <div className="relative z-10 mt-8 flex items-center gap-3">
-                  <span className="text-sm font-bold uppercase tracking-widest text-white">
-                    ILMOITTAUDU MUKAAN
-                  </span>
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#FF6A00] transition-colors duration-200 group-hover:bg-[#E85C00]">
-                    <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 14 14">
-                      <path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
+                <div className="relative z-10 mt-6">
+                  <span className="btn-primary w-full justify-center sm:w-auto">
+                    Ilmoittaudu mukaan
                   </span>
                 </div>
               </div>
@@ -277,23 +271,23 @@ export default async function HomePage() {
             {/* ─── Card 2 — Biketrial-seura ───────────────────── */}
             <Link
               href="/seura"
-              className="group relative flex min-h-[400px] flex-col overflow-hidden rounded-2xl bg-[#FF6A00] transition-all duration-300 hover:bg-[#E85C00]"
+              className="group relative flex min-h-[380px] flex-col overflow-hidden rounded-2xl bg-[#FF6A00] transition-all duration-300 hover:bg-[#E85C00] sm:min-h-[400px]"
             >
-              <div className="relative h-[190px] overflow-hidden sm:h-[210px]">
+              <div className="relative h-[210px] overflow-hidden sm:h-[210px]">
                 <Image
                   src={homepageFallbackImages.clubCardImage}
                   alt="Biketrial- ja polkupyörätrialharjoittelua Hämeenlinnassa"
                   fill
-                  className="absolute inset-0 scale-[1.05] object-cover object-center contrast-110 saturate-110 transition-transform duration-500 group-hover:scale-[1.08]"
+                  className="absolute inset-0 object-cover object-center contrast-110 saturate-110 transition-transform duration-500 group-hover:scale-[1.04] sm:scale-[1.05] sm:group-hover:scale-[1.08]"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/38 via-black/10 to-transparent"
                 />
-                <div className="absolute inset-x-0 bottom-0 z-10 px-8 pb-7 sm:px-10 sm:pb-8">
+                <div className="absolute inset-x-0 bottom-0 z-10 px-5 pb-5 sm:px-10 sm:pb-8">
                   <h2
-                    className="text-4xl leading-none text-white sm:text-5xl"
+                    className="text-[2rem] leading-none text-white sm:text-5xl"
                     style={{ fontFamily: 'var(--font-anton), Impact, sans-serif', textTransform: 'uppercase', letterSpacing: '0' }}
                   >
                     Mitä on Biketrial?
@@ -301,7 +295,7 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              <div className="relative flex flex-1 flex-col justify-between p-8 sm:p-10">
+              <div className="relative flex flex-1 flex-col justify-between p-5 sm:p-10">
                 <div
                   aria-hidden
                   className="absolute bottom-0 left-0 h-56 w-56 rounded-tr-full bg-black/10"

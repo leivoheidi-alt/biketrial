@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fi" className={`${inter.variable} ${anton.variable}`}>
       <body className="bg-black text-white">
         <Navbar />
-        <main className="pt-16">{children}</main>
+        <main className="pt-16 md:pt-20">{children}</main>
         <Footer />
       </body>
     </html>
